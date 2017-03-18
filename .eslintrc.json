@@ -1,12 +1,10 @@
 {
   "extends": ["warp/node", "warp/es6"],
+  "root": true,
   "env": {
-    "browser": true,
-    "node": true
+    "browser": true
   },
-  "rules": {
-    "indent": [2, 2, {"MemberExpression": 1, "SwitchCase": 1}],
-    "max-len": [2, {"code": 150}],
-    "newline-before-return": ["off"]
+  "rules":{
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }
