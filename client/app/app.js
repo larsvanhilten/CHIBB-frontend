@@ -24,5 +24,5 @@ const dependencies = [
 ];
 
 angular.module('app', dependencies)
-  .config(config)
-  .run(run);
+.config(config)
+.run(run);
