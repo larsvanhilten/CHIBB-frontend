@@ -13,45 +13,21 @@ html, body {
   height: 100%;
 }
 body {
-  background: $dark;
-  color: #fff;
+  background: $white;
   overflow-y: scroll;
   margin: 0;
   &.noscroll {
     overflow: hidden;
   }
-}
-
-//simple bootstrap-like container
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.global-loader {
-  display: flex;
-  align-items: center;
-  height: 100%; width: 100%;
-  position: fixed;
-  top: 0; left: 0;
-  background: rgba(0,0,0, 0.3);
-  transition: all $timing-short $anim;
-  opacity: 1;
-  &.hidden {
-    opacity: 0;
+  .bottom-bar {
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    z-index: -10;
+    background-color: $orange;
   }
 }
-.ui.loader {
-  &:after {
-    animation-duration: 1s;
-    border-color: $blue-universal transparent transparent;
-    border-width: 0.3em;
-  }
-  &:before {
-    border: .3em solid rgba(255, 255, 255, .3);
-  }
-}
-
 
 //main router outlet
 .app {
@@ -63,6 +39,10 @@ body {
   width: 100%; height: 100%;
   transition: all 0.5s ease;
   opacity: 1; transform: translateY(0);
+
+  .ng-isolate-scope{
+    width: 100%;
+  }
 
   &.ng-hide, &.ng-enter {
     opacity: 0; transform: translateY(100px);

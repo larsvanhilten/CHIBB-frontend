@@ -1,0 +1,15 @@
+@import "../../core/constants";
+@import "../../core/mixins";
+
+std-text {
+  .input-container input {
+    height: 35px;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  label, input {
+    display: block;
+  }
+}

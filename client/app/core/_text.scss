@@ -2,16 +2,16 @@
 @import "./constants";
 
 input:-webkit-autofill {
-  background-color: #fff;
+  background-color: #ffff;
 }
 
 //selection
 ::selection {
-  background: $blue-universal;
+  background: $white;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: $blue-universal;
+  background: $white;
   color: #fff;
 }

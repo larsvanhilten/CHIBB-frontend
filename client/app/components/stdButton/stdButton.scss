@@ -1,0 +1,19 @@
+@import "../../core/constants";
+@import "../../core/mixins";
+
+std-button {
+  .container {
+    width: 100%;
+    height: 35px;
+    background-color: $orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  .text {
+    color: $white;
+    font-weight: 900;
+  }
+}
