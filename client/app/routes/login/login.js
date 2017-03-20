@@ -16,7 +16,7 @@ const loginComponent = {
     url: '/login',
     //componentBindings: [],
     //resolve: [],
-    pageTitle: 'login',
+    pageTitle: 'Login',
   },
   template,
   controller,

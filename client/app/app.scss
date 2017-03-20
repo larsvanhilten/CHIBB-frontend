@@ -25,6 +25,10 @@ body {
     position: absolute;
     bottom: 0;
     z-index: -10;
+    padding: 2% 20% 2% 20%;
+    color: $white;
+    text-align: center;
+    box-sizing: border-box;
     background-color: $orange;
   }
 }

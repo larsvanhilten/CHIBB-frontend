@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>App</title>
+    <title ng-bind="$state.current.pageTitle ? 'CHIBB | ' + $state.current.pageTitle : 'CHIBB'"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,6 +14,11 @@
     <div class="outlet-full" ui-view>
 
     </div>
-    <div class="bottom-bar"></div>
+    <div class="bottom-bar">
+      <p>Contact</p>
+      +31 (0)10 415 72 44
+      <br>
+      info@concepthousevillage.nl
+    </div>
   </body>
 </html>
