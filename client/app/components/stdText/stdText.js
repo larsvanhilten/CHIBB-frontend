@@ -7,7 +7,7 @@ const stdTextComponent = {
     name: '@',
     label: '@',
     type: '@',
-    value: '&'
+    data: '='
   },
   template,
   controller: function() {

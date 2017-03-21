@@ -7,16 +7,17 @@
 
   <div class="form-container">
     <div class="login-container">
-      <std-text label="Email" name="email" type="email"></std-text>
+      <std-text label="Email" name="email" type="text" data="vm.email"></std-text>
       <br>
-      <std-text label="Password" name="password" type="password"></std-text>
+      <std-text label="Password" name="password" type="password" data="vm.password"></std-text>
       <br>
-      <std-button text="Login"></std-button>
+      <std-button text="Login" ng-click="vm.submit()"></std-button>
+      <p>{{vm.error}}</p>
     </div>
     <div class="divider"></div>
     <div class="register-container">
       <div class="button-container">
-        <std-button text="Register"></std-button>
+        <std-button text="Register" ng-click="vm.register()"></std-button>
       </div>
     </div>
   </div>
