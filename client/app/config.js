@@ -6,7 +6,7 @@ const config = ($locationProvider, $stateProvider, $urlRouterProvider, $httpProv
   'ngInject';
 
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/loginq');
 
   // Add http interceptors
   each(['endpointInjector', 'bodyCleaningInjector'], i => $httpProvider.interceptors.push(i));
