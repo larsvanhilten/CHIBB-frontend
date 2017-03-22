@@ -50,6 +50,7 @@ login {
       flex-direction: column;
       justify-content: center;
       .button-container {
+        transition: all 1s linear;
         width: 250px;
         height: 25px;
       }

@@ -1,0 +1,38 @@
+@import "../../core/constants";
+@import "../../core/mixins";
+
+.layout--header {
+  text-align: center;
+  height: 20%;
+  margin-top: 2%;
+}
+
+.layout--header h2 {
+  color: $orange;
+}
+
+.layout--header p {
+  color: $green;
+  font-weight: 600;
+}
+
+
+register .container {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+register .register-container {
+  width: 40%;
+  padding: 0 5% 0 5%;
+  border-right: 1px solid $orange;
+  border-left: 1px solid $orange;
+}
+
+.register-container std-text, std-button {
+  margin-bottom: 5%;
+  display: block;
+}

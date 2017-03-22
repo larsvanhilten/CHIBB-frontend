@@ -3,7 +3,7 @@ import routeWrap from 'ng-component-routing';
 import template from './login.html';
 import './login.scss';
 
-const controller = function(Session) {
+const controller = function(Session, $state) {
   'ngInject';
 
   this.email = null;
@@ -18,6 +18,7 @@ const controller = function(Session) {
     });
   };
 
+  this.register = () => $state.go('register');
 };
 
 const loginComponent = {
