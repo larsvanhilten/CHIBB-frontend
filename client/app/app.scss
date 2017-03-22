@@ -4,6 +4,7 @@
 //include icons
 $fa-font-path: "/fonts" !default;
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../fonts/lato/lato.scss";
 
 @import "./core/constants";
 @import "./core/text";
@@ -11,6 +12,7 @@ $fa-font-path: "/fonts" !default;
 html, body {
   min-height: 100%;
   height: 100%;
+  font-family: 'Lato';
 }
 body {
   background: $white;
