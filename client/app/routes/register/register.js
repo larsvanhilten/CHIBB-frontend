@@ -6,7 +6,15 @@ import './register.scss';
 const controller = function($state) {
   'ngInject';
 
+  this.email = null;
+  this.name = null;
+  this.password = null;
+  this.repeatPassword = null;
+
   this.back = () => $state.go('login');
+  this.register = () => {
+
+  };
 };
 
 const registerComponent = {
