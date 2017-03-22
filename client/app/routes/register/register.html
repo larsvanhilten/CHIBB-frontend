@@ -5,10 +5,12 @@
 
 <section class="container">
   <div class="register-container">
-  <std-text label="Email" name="email" type="email" data="vm.email"></std-text>
-  <std-text label="Name" name="text" type="text" data="vm.name"></std-text>
-  <std-text label="Password" name="email" type="password" data="vm.password"></std-text>
-  <std-text label="Repeat password" name="email" type="password" data="vm.repeatPassword"></std-text>
-  <std-button text="register"></std-button>
+    <std-button text="Back" ng-click="vm.back()"></std-button>
+    <std-text label="Email" name="email" type="email" data="vm.email"></std-text>
+    <std-text label="Name" name="text" type="text" data="vm.name"></std-text>
+    <std-text label="Password" name="email" type="password" data="vm.password"></std-text>
+    <std-text label="Repeat password" name="email" type="password" data="vm.repeatPassword"></std-text>
+    <std-button text="register"></std-button>
+    <p class="error-message">{{vm.error}}</p>
   </div>
 </section>

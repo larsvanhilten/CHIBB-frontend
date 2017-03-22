@@ -3,10 +3,10 @@ import routeWrap from 'ng-component-routing';
 import template from './register.html';
 import './register.scss';
 
-const controller = function() {
+const controller = function($state) {
   'ngInject';
 
-  this.name = 'register';
+  this.back = () => $state.go('login');
 };
 
 const registerComponent = {
@@ -16,7 +16,7 @@ const registerComponent = {
     url: '/register',
     //componentBindings: [],
     //resolve: [],
-    pageTitle: 'register',
+    pageTitle: 'Register',
   },
   template,
   controller,
