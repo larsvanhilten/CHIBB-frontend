@@ -1,60 +1,49 @@
 @import "../../core/constants";
 @import "../../core/mixins";
 
-login {
-  .header {
-    text-align: center;
-    height: 20%;
-    margin-top: 2%;
-    h2{
-      color: $orange;
-    }
-    p {
-      color: $green;
-      font-weight: 600;
-    }
-  }
-  .form-container {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .divider {
-      width: 1px;
-      height: 65%;
-      background-color: $orange;
-      margin: 0 5% 0 5%;
-    }
-    .login-container {
-      width: 25%;
-      height: 65%;
-      padding: 2% 0 2% 0;
-      box-sizing: border-box;
-      std-text {
-        margin-top: 2%;
-      }
-      std-button {
-        margin-top: 2%;
-      }
-      p {
-        color: red;
-        font-style: italic;
-      }
-    }
-    .register-container {
-      width: 25%;
-      height: 65%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      .button-container {
-        transition: all 1s linear;
-        width: 250px;
-        height: 25px;
-      }
-    }
-  }
-
+login .form-container {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+login .divider {
+  width: 1px;
+  height: 65%;
+  background-color: $orange;
+  margin: 0 5% 0 5%;
+}
+
+login .login-container {
+  width: 25%;
+  height: 65%;
+  padding: 2% 0 2% 0;
+  box-sizing: border-box;
+}
+
+login std-text, std-button {
+  margin-top: 2%;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  text-align: center;
+}
+
+login .register-container {
+  width: 25%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+login .button-container {
+  transition: all 1s linear;
+  width: 250px;
+  height: 25px;
+}
+
