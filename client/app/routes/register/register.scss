@@ -3,7 +3,7 @@
 
 .layout--header {
   text-align: center;
-  height: 20%;
+  height: 15%;
   margin-top: 2%;
 }
 
@@ -18,7 +18,7 @@
 
 
 register .container {
-  height: 50%;
+  height: calc(100% - 150px - 15% - 40px);
   width: 100%;
   display: flex;
   justify-content: center;

@@ -2,7 +2,7 @@
 @import "../../core/mixins";
 
 login .form-container {
-  height: 50%;
+  height: calc(100% - 150px - 15% - 40px);
   width: 100%;
   display: flex;
   justify-content: center;
