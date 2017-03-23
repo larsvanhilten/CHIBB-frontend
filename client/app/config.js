@@ -9,7 +9,11 @@ const config = ($locationProvider, $stateProvider, $urlRouterProvider, $httpProv
   $urlRouterProvider.otherwise('/login');
 
   // Add http interceptors
-  each(['endpointInjector', 'bodyCleaningInjector'], i => $httpProvider.interceptors.push(i));
+  each([
+    'endpointInjector',
+    'sessionInjector',
+    'bodyCleaningInjector'
+  ], i => $httpProvider.interceptors.push(i));
 
   $provide.decorator('$log', ['$delegate', function ($delegate) {
     const hooks = ['info', 'debug', 'warn', 'error'];

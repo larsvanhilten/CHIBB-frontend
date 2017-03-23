@@ -12,7 +12,9 @@ const controller = function(Session, $state) {
 
   this.submit = () => {
     Session.login({email: this.email, password: this.password})
-    .then(() => {})
+    .then(() => {
+      $state.go('dashboard');
+    })
     .catch(err => {
       this.error = err.data.message;
     });
@@ -26,8 +28,7 @@ const loginComponent = {
   routeOpts: {
     name: 'login',
     url: '/login',
-    //componentBindings: [],
-    //resolve: [],
+    //resolve: ['redirectLogin'],
     pageTitle: 'Login',
   },
   template,
