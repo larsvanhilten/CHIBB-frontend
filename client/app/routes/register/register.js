@@ -3,7 +3,7 @@ import routeWrap from 'ng-component-routing';
 import template from './register.html';
 import './register.scss';
 
-const controller = function($state) {
+const controller = function($state, Session) {
   'ngInject';
 
   this.email = null;
@@ -13,7 +13,24 @@ const controller = function($state) {
 
   this.back = () => $state.go('login');
   this.register = () => {
+    if(this.password !== this.repeatPassword) {
+      this.error = `The passwords don't match.`;
+      return;
+    }
 
+    const user = {
+      email: this.email,
+      password: this.password,
+      name: this.name
+    };
+
+    Session.register(user)
+    .then(() => {
+      $state.go('login');
+    })
+    .catch(err => {
+      this.error = err.data.message;
+    });
   };
 };
 
