@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-strict-di>
   <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="/img/favicon.ico">
@@ -11,7 +11,7 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <base href="/">
   </head>
-  <body class="app" ng-strict-di>
+  <body ng-cloak>
     <div class="outlet-full" ui-view></div>
     <div class="bottom-bar">
       <p>Contact</p>
