@@ -1,7 +1,14 @@
 import {extend, has} from 'lodash-es';
 
-const run = ($rootScope, $state, $stateParams, $log) => {
+const run = ($rootScope, $state, $stateParams, $log, Resolver) => {
   'ngInject';
+
+  Resolver.add({
+    resolveLogin: ['$q', 'Session', ($q, Session) => Session.check()
+    .then(() => $q.reject({redirect: 'dashboard'}), $q.resolve)],
+    resolveSession: ['$q', 'Session', ($q, Session) => Session.check()
+    .then($q.resolve, () => $q.reject({redirect: 'login'}))]
+  });
 
   $rootScope.$state = $state;
 
@@ -23,9 +30,9 @@ const run = ($rootScope, $state, $stateParams, $log) => {
     e.preventDefault();
     if(has(error, 'redirect')) {
       $log.info('Redirecting to', error.redirect);
-      $state.go(error.redirect, error.params || {});
+      return $state.go(error.redirect, error.params || {});
     }
-    $log.error(error);
+    return $log.error(error);
   });
 };
 

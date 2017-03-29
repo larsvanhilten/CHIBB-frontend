@@ -28,7 +28,7 @@ const loginComponent = {
   routeOpts: {
     name: 'login',
     url: '/login',
-    //resolve: ['redirectLogin'],
+    resolve: ['resolveLogin'],
     pageTitle: 'Login',
   },
   template,
