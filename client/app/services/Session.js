@@ -21,9 +21,9 @@ const SessionService = function($http, $q) {
     localStorage.removeItem('token');
   };
 
-  this.check = () => {
+  this.check = init => {
     const defer = $q.defer();
-    if(localStorage.token !== undefined) {
+    if(localStorage.token !== undefined && !init) {
       defer.resolve();
     } else {
       this.checkAuthorized().then(defer.resolve, defer.reject);

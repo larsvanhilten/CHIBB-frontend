@@ -15,7 +15,7 @@ const dashboardComponent = {
     name: 'dashboard',
     url: '/dashboard',
     //componentBindings: [],
-    //resolve: [],
+    resolve: ['resolveSession'],
     pageTitle: 'dashboard',
   },
   template,
