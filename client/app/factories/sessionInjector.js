@@ -8,7 +8,7 @@ const sessionInjector = $injector => {
     request: config => {
       const Session = $injector.get('Session');
       if(Session.auth === true) {
-        config.headers.Authorization = Session.accessToken;
+        config.headers.Authorization = Session.token;
       }
       return config;
     },
