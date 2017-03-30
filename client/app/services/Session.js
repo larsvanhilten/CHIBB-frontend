@@ -48,8 +48,6 @@ const SessionService = function($http, $q) {
     return defer.promise;
   };
 
-  this.init = {};
-
   this.login = credentials => {
     const defer = $q.defer();
     $http.post('/auth', credentials)
@@ -57,14 +55,6 @@ const SessionService = function($http, $q) {
       this.createSession(result.token);
       return defer.resolve();
     })
-    .catch(err => defer.reject(err));
-    return defer.promise;
-  };
-
-  this.register = user => {
-    const defer = $q.defer();
-    $http.post('/users', user)
-    .then(() => defer.resolve())
     .catch(err => defer.reject(err));
     return defer.promise;
   };

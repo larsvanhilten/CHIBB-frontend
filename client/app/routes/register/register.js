@@ -3,7 +3,7 @@ import routeWrap from 'ng-component-routing';
 import template from './register.html';
 import './register.scss';
 
-const controller = function($state, Session) {
+const controller = function($state, Users) {
   'ngInject';
 
   this.email = null;
@@ -13,25 +13,28 @@ const controller = function($state, Session) {
 
   this.back = () => $state.go('login');
   this.register = () => {
+    this.error = '';
+
     if(this.password !== this.repeatPassword) {
-      this.error = `The passwords don't match.`;
-      return;
+      this.error = `The passwords don't match`;
+    } else {
+
+      const user = {
+        email: this.email,
+        name: this.name,
+        password: this.password
+      };
+
+      Users.create(user)
+      .then(() => {
+        $state.go('login');
+      })
+      .catch(err => {
+        this.error = err;
+      });
     }
-
-    const user = {
-      email: this.email,
-      password: this.password,
-      name: this.name
-    };
-
-    Session.register(user)
-    .then(() => {
-      $state.go('login');
-    })
-    .catch(err => {
-      this.error = err.data.message;
-    });
   };
+
 };
 
 const registerComponent = {
@@ -40,7 +43,7 @@ const registerComponent = {
     name: 'register',
     url: '/register',
     //componentBindings: [],
-    //resolve: [],
+    resolve: ['resolveLogin'],
     pageTitle: 'Register',
   },
   template,
