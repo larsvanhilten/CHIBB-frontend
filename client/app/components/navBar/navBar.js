@@ -16,7 +16,7 @@ const navBarComponent = {
       oldActive.active = false;
       menu.active = true;
 
-      //TODO: go to menu's state
+      //TODO: go to the selected menu's state
     };
 
     this.home = () => {
