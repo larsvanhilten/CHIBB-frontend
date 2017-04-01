@@ -26,7 +26,6 @@ const UsersService = function($q, $http, $state) {
         return defer.reject();
       }
       this.me = me;
-      console.log(this.me);
       defer.resolve(me);
       return null;
     }, () => {

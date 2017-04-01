@@ -10,7 +10,8 @@ const SessionService = function($http, $q, Users, $state) {
     this.auth = true;
     this.token = token;
     localStorage.setItem('token', token);
-    Users.getMe();
+    Users.getMe()
+    .catch(() => this.destroySession());
   };
   if(localStorage.token !== undefined) {this.createSession(localStorage.token);}
 
@@ -19,6 +20,7 @@ const SessionService = function($http, $q, Users, $state) {
     this.token = null;
     Users.me = null;
     localStorage.removeItem('token');
+    $state.go('login');
   };
 
   this.check = () => {
@@ -44,7 +46,6 @@ const SessionService = function($http, $q, Users, $state) {
 
   this.logout = () => {
     this.destroySession();
-    return $state.go('login');
   };
 
 };
