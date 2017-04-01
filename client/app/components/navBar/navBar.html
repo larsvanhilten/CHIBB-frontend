@@ -1,7 +1,17 @@
 <div class="nav-container" ng-if="$root.showNavBar">
-  <div class="nav-brand">
-    <h3>CHIBB</h3>
+  <div class="nav-brand" ng-click="vm.home()">
+    <h2>CHIBB</h2>
   </div>
-  <div class="navigation"></div>
-  <div class="user"></div>
+  <div class="navigation">
+    <div
+    ng-repeat="menu in vm.menuItems track by $index"
+    class="menu-item"
+    ng-class="{active : menu.active}"
+    ng-click="vm.menuSelect(menu)">
+      <h3>{{menu.name | uppercase}}</h3>
+    </div>
+  </div>
+  <div class="user" ng-click="vm.profile()">
+    <h2>LARS</h2>
+  </div>
 </div>

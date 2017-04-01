@@ -25,9 +25,7 @@ const UsersService = function($q, $http, $state) {
       if(me.authorized === false) {
         return defer.reject();
       }
-      console.log('gett');
       this.me = me;
-      console.log(me);
       defer.resolve(me);
       return null;
     }, () => {
