@@ -1,0 +1,22 @@
+@import "../../core/constants";
+@import "../../core/mixins";
+
+nav-bar .nav-container {
+  width: 100%;
+  position: absolute;
+  height: 50px;
+  padding: 0 10px 0 10px;
+  box-sizing: border-box;
+  background-color: $orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav-bar .nav-brand {
+  width: 5%;
+  height: 50px;
+  text-align: center;
+  line-height: 15px;
+  color: white;
+}

@@ -44,9 +44,8 @@ const SessionService = function($http, $q, Users, $state) {
     return defer.promise;
   };
 
-  this.logout = () => {
-    this.destroySession();
-  };
+  this.logout = () => this.destroySession();
+
 
 };
 

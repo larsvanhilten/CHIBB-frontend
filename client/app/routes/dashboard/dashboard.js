@@ -14,7 +14,7 @@ const dashboardComponent = {
   routeOpts: {
     name: 'dashboard',
     url: '/dashboard',
-    //componentBindings: [],
+    showNavBar: true,
     resolve: ['resolveSession'],
     pageTitle: 'dashboard',
   },

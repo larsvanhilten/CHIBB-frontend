@@ -12,12 +12,8 @@
     <base href="/">
   </head>
   <body ng-cloak>
-    <div class="outlet-full" ui-view></div>
-    <div class="bottom-bar">
-      <p>Contact</p>
-      +31 (0)10 415 72 44
-      <br>
-      info@concepthousevillage.nl
-    </div>
+    <nav-bar></nav-bar>
+    <div class="outlet-full" ui-view ng-class="{__hasNavbar: $root.showNavBar}"></div>
+    <footer></footer>
   </body>
 </html>
