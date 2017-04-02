@@ -1,4 +1,5 @@
 import angular from 'angular';
+import _ from 'lodash';
 
 const UsersService = function($q, $http, $state) {
   'ngInject';
@@ -16,6 +17,17 @@ const UsersService = function($q, $http, $state) {
     .catch(err => defer.reject(err.data.message));
 
     return defer.promise;
+  };
+
+  this.update = user => {
+    const defer = $q.defer();
+
+    $http.put(`/users/${this.me._id}`, user)
+    .then(updatedUser => {
+      this.me = _.assign(this.me, updatedUser);
+      defer.resolve(this.me);
+    })
+    .catch(err => defer.reject(err.data.message));
   };
 
   this.getMe = () => {
