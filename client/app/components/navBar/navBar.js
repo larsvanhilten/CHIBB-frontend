@@ -6,10 +6,12 @@ import './navBar.scss';
 const navBarComponent = {
   bindings: {},
   template,
-  controller: function($rootScope, Users, $state) {
+  controller: function($rootScope, Users, $state, $scope) {
     'ngInject';
 
     this.menuItems = [{name: 'Users', active: true}, {name: 'data'}, {name: 'profile'}];
+    this.profileOptions = [{name: 'Profile'}, {name: 'Logout'}];
+    $scope.expandProfileOptions = false;
 
     this.menuSelect = menu => {
       const oldActive = _.find(this.menuItems, menu => menu.active);
@@ -21,10 +23,6 @@ const navBarComponent = {
 
     this.home = () => {
       $state.go(Users.me.home || 'dashboard');
-    };
-
-    this.profile = () => {
-      $state.go('profile');
     };
 
     $rootScope.$on('$stateChangeSuccess', (e, toState) => {

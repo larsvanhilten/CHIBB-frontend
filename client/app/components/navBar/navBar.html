@@ -11,7 +11,10 @@
       <h3>{{menu.name | uppercase}}</h3>
     </div>
   </div>
-  <div class="user" ng-click="vm.profile()">
+  <div class="user" ng-mouseover="vm.expandProfileOptions = true" ng-mouseleave="vm.expandProfileOptions = false">
     <h2>LARS</h2>
+  </div>
+  <div class="profile-options" ng-mouseover="vm.expandProfileOptions = true" ng-mouseleave="vm.expandProfileOptions = false"  ng-show="vm.expandProfileOptions">
+    <div class="option-item" ng-repeat="option in vm.profileOptions track by $index">{{option.name | uppercase }}</div>
   </div>
 </div>

@@ -38,10 +38,8 @@ nav-bar .menu-item {
 }
 
 nav-bar .active {
-  border-top: 5px solid $green;
   border-bottom: 5px solid $green;
   box-sizing: border-box;
-  line-height: 5px;
   transform: translateZ(0);
   transition: all 0.1s ease-out;
 }
@@ -54,6 +52,25 @@ nav-bar .user {
   background-color: $white;
   color: $orange;
   float: right;
+  text-decoration: underline;
+}
+
+nav-bar .profile-options {
+  width: calc(10% - -3px);
+  min-height: 100%;
+  float: right;
+  box-sizing: border-box;
+  border-left: 3px solid $orange;
+  border-bottom: 3px solid $orange;
+}
+
+nav-bar .option-item {
+  height: 25px;
+  color: $orange;
+  font-size: 18px;
+  padding: 10px;
   cursor: pointer;
+  font-weight: bold;
+  text-align: center;
 }
 
