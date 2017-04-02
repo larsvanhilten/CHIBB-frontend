@@ -6,12 +6,12 @@ import './navBar.scss';
 const navBarComponent = {
   bindings: {},
   template,
-  controller: function($rootScope, Users, $state, $scope) {
+  controller: function($rootScope, Users, $state) {
     'ngInject';
 
     this.menuItems = [{name: 'Users', active: true}, {name: 'data'}, {name: 'profile'}];
     this.profileOptions = [{name: 'Profile'}, {name: 'Logout'}];
-    $scope.expandProfileOptions = false;
+    this.expandProfileOptions = false;
 
     this.menuSelect = menu => {
       const oldActive = _.find(this.menuItems, menu => menu.active);
