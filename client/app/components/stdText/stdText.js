@@ -9,7 +9,8 @@ const stdTextComponent = {
     name: '@',
     label: '@',
     type: '@',
-    data: '='
+    data: '=',
+    readOnly: '='
   },
   template,
   controller: function() {
