@@ -1,0 +1,13 @@
+@import "../../core/constants";
+@import "../../core/mixins";
+
+profile .profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+profile .form-container {
+  width: 50%;
+  margin-top: 2%;
+}
