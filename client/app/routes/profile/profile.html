@@ -1,12 +1,12 @@
 <div class="profile-container">
   <div class="form-container">
-    <std-text label="E-mail" type="text" data="vm.user.email" read-only="true"></std-text>
+    <std-text label="E-mail" type="text" data="vm.user.email" read-only="true" help="{{vm.adminNotice}}"></std-text>
     <br>
     <std-text label="Name" type="text" data="vm.user.name"></std-text>
     <br>
-    <std-text label="Role" type="text" data="vm.user.role" read-only="true"></std-text>
+    <std-text label="Role" type="text" data="vm.user.role" read-only="true" help="{{vm.adminNotice}}"></std-text>
     <br>
-    <std-text label="Password" type="password" data="vm.user.password"></std-text>
+    <std-text label="Password" type="password" data="vm.user.password" help="{{vm.passwordHelp}}"></std-text>
     <br>
     <std-text label="Repeat password" type="password" data="vm.user.repeatPassword"></std-text>
     <br>

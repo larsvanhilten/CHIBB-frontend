@@ -6,6 +6,12 @@ import './profile.scss';
 const controller = function(Users) {
   'ngInject';
 
+  this.passwordHelp =
+  'Must be 8 characters long and contain a non-alphabetical character';
+
+  this.adminNotice =
+  'Only an admin can edit this field';
+
   //retrieve user from Users.me
   this.user = {};
   this.error = '';
