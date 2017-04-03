@@ -11,6 +11,9 @@ const controller = function($state, Users) {
   this.password = null;
   this.repeatPassword = null;
 
+  this.passwordHelp =
+  'Must be 8 characters long and contain a non-alphabetical character';
+
   this.back = () => $state.go('login');
   this.register = () => {
     this.error = '';

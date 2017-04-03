@@ -8,7 +8,7 @@
     <std-button text="Back" ng-click="vm.back()"></std-button>
     <std-text label="Email" type="text" data="vm.email"></std-text>
     <std-text label="Name" type="text" data="vm.name"></std-text>
-    <std-text label="Password" type="password" data="vm.password"></std-text>
+    <std-text label="Password" type="password" data="vm.password" help="{{vm.passwordHelp}}"></std-text>
     <std-text label="Repeat password" type="password" data="vm.repeatPassword"></std-text>
     <std-button text="register" ng-click="vm.register()"></std-button>
     <p class="error-message">{{vm.error}}</p>
