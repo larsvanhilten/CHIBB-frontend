@@ -1,5 +1,10 @@
 <div class="input-container">
-  <label for="{{vm.name}}">{{vm.label}}</label>
+  <label for="{{vm.name}}">
+    {{vm.label}}
+    <i class="fa fa-question-circle-o tooltip" aria-hidden="true" ng-if="vm.help">
+      <span class="tooltip-text">{{vm.help}}</span>
+    </i>
+  </label>
   <input
   id="{{vm.name}}"
   type="{{vm.type}}"

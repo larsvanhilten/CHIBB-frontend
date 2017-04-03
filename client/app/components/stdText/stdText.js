@@ -8,6 +8,7 @@ const stdTextComponent = {
   bindings: {
     name: '@',
     label: '@',
+    help: '@',
     type: '@',
     data: '=',
     readOnly: '='

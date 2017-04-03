@@ -15,12 +15,52 @@ std-text {
     }
   }
 
-
   label {
     margin-bottom: 5px;
   }
 
   label, input {
     display: block;
+  }
+
+  .tooltip {
+      position: relative;
+      display: inline-block;
+      color: $orange;
+      white-space: nowrap;
+  }
+
+  .tooltip .tooltip-text {
+      visibility: hidden;
+      position: absolute;
+      left: 175%;
+      bottom: -25%;
+      width: 120px;
+      width: auto;
+      background-color: $white;
+      color: $orange;
+      border: 1px solid $orange;
+      text-align: center;
+      padding: 5px;
+      border-radius: 6px;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 1s;
+  }
+
+  .tooltip .tooltip-text::after {
+  	 content: "";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent $orange transparent transparent;
+  }
+
+  .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
   }
 }
