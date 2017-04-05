@@ -12,7 +12,8 @@ const config = ($locationProvider, $stateProvider, $urlRouterProvider, $httpProv
   each([
     'endpointInjector',
     'sessionInjector',
-    'bodyCleaningInjector'
+    'bodyCleaningInjector',
+    'errorInterceptor'
   ], i => $httpProvider.interceptors.push(i));
 
   $provide.decorator('$log', ['$delegate', function ($delegate) {
