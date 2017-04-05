@@ -10,8 +10,6 @@ const SessionService = function($http, $q, Users, $state) {
     this.auth = true;
     this.token = token;
     localStorage.setItem('token', token);
-    Users.getMe()
-    .catch(() => this.destroySession());
   };
   if(localStorage.token !== undefined) {this.createSession(localStorage.token);}
 

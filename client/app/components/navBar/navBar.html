@@ -13,7 +13,7 @@
   </div>
   <div class="user-container" ng-mouseover="vm.expandProfileOptions = true" ng-mouseleave="vm.expandProfileOptions = false">
     <div class="user">
-      <h2>LARS</h2>
+      <h2>{{vm.name}}</h2>
     </div>
     <div class="profile-options" ng-class="{__isOpen: vm.expandProfileOptions}">
       <div class="option-item" ng-repeat="option in vm.profileOptions track by $index">{{option.name | uppercase }}</div>

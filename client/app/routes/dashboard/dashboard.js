@@ -15,7 +15,7 @@ const dashboardComponent = {
     name: 'dashboard',
     url: '/dashboard',
     showNavBar: true,
-    resolve: ['resolveSession'],
+    resolve: ['resolveSession', 'me'],
     pageTitle: 'Dashboard',
   },
   template,

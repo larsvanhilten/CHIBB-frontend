@@ -27,7 +27,7 @@ const navBarComponent = {
 
     $rootScope.$on('$stateChangeSuccess', (e, toState) => {
       $rootScope.showNavBar = Boolean(toState.showNavBar);
-      if($rootScope.showNavBar) {
+      if($rootScope.showNavBar && Users.me) {
         this.name = Users.me.name;
       }
     });

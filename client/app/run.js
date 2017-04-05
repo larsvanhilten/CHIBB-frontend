@@ -7,7 +7,8 @@ const run = ($rootScope, $state, $stateParams, $log, Resolver) => {
     resolveLogin: ['$q', 'Session', ($q, Session) => Session.check()
     .then(() => $q.reject({redirect: 'dashboard'}), $q.resolve)],
     resolveSession: ['$q', 'Session', ($q, Session) => Session.check()
-    .then($q.resolve, () => $q.reject({redirect: 'login'}))]
+    .then($q.resolve, () => $q.reject({redirect: 'login'}))],
+    me: ['Users', 'Session', Users => Users.getMe()],
   });
 
   $rootScope.$state = $state;
