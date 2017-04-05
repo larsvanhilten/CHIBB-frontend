@@ -44,26 +44,41 @@ nav-bar .active {
   transition: all 0.1s ease-out;
 }
 
-nav-bar .user {
+nav-bar .user-container {
+  float: right;
   width: 10%;
+}
+nav-bar .user {
   height: 50px;
   text-align: center;
-  line-height: 15px;
+  line-height: 12px;
   background-color: $white;
   color: $orange;
-  float: right;
+  float: left;
+  width: 100%;
   text-decoration: underline;
 }
 
 nav-bar .profile-options {
-  width: calc(10% - -3px);
-  min-height: 100%;
+  width: calc(100% + 3px);
+  // transform: translateX(-3px);
+  max-height: 0;
+  overflow: hidden;
+  height: 100%;
+  margin-top: -3px;
   float: right;
+  display: block;
   box-sizing: border-box;
   border-left: 3px solid $orange;
   border-bottom: 3px solid $orange;
   border-bottom-left-radius: 5px;
+  transition: .2s max-height linear;
+
+  &.__isOpen {
+    max-height: 100px;
+  }
 }
+
 
 nav-bar .option-item {
   height: 25px;
@@ -73,5 +88,8 @@ nav-bar .option-item {
   cursor: pointer;
   font-weight: bold;
   text-align: center;
+  width: 100%;
+  display: block;
+  float: left;
 }
 
