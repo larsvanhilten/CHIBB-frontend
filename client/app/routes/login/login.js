@@ -16,7 +16,7 @@ const controller = function(Session, $state) {
       $state.go('dashboard');
     })
     .catch(err => {
-      this.error = err.data.message;
+      this.error = err.message;
     });
   };
 
