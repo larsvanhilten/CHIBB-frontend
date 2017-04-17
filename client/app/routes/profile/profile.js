@@ -34,7 +34,7 @@ const profileComponent = {
     name: 'profile',
     url: '/profile',
     showNavBar: true,
-    resolve: ['resolveSession'],
+    resolve: ['resolveSession', 'me'],
     pageTitle: 'Profile',
   },
   template,
