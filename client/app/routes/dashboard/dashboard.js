@@ -33,7 +33,6 @@ const controller = function($scope, Sensors) {
       text: 'Rainfall'
     }
   };
-
   this.rainfall.x = [];
   this.rainfall.y = [];
   Sensors.get('rainfall')
@@ -41,6 +40,23 @@ const controller = function($scope, Sensors) {
     _.map(readings, reading => {
       this.rainfall.y.push(reading.reading);
       this.rainfall.x.push(reading.timestamp);
+    });
+  });
+
+  this.temperature = {};
+  this.temperature.options = {
+    title: {
+      display: true,
+      text: 'Temperature'
+    }
+  };
+  this.temperature.x = [];
+  this.temperature.y = [];
+  Sensors.get('temperature')
+  .then(readings => {
+    _.map(readings, reading => {
+      this.temperature.y.push(reading.reading);
+      this.temperature.x.push(reading.timestamp);
     });
   });
 
