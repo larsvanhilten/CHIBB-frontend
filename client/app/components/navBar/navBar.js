@@ -14,11 +14,11 @@ const navBarComponent = {
     this.expandProfileOptions = false;
 
     this.menuSelect = menu => {
-      const oldActive = _.find(this.menuItems, menu => menu.active);
+      const oldActive = _.find(this.me.menuOptions, menu => menu.active);
       oldActive.active = false;
       menu.active = true;
 
-      //TODO: go to the selected menu's state
+      menu.action();
     };
 
     this.home = () => {
@@ -26,6 +26,7 @@ const navBarComponent = {
     };
 
     $rootScope.$on('$stateChangeSuccess', (e, toState) => {
+      this.me = Users.me;
       $rootScope.showNavBar = Boolean(toState.showNavBar);
       if($rootScope.showNavBar && Users.me) {
         this.name = Users.me.name;
