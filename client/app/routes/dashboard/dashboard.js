@@ -6,7 +6,13 @@ import './dashboard.scss';
 const controller = function() {
   'ngInject';
 
-  this.name = 'dashboard';
+  this.config = {
+    title: 'test',
+    dataX: [1, 2, 3, 4],
+    labelX: 'testX',
+    dataY: [2, 4, 6, 8],
+    labelY: 'testY'
+  };
 };
 
 const dashboardComponent = {

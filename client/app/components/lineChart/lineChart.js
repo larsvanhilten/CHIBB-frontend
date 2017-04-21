@@ -10,13 +10,11 @@ const lineChartComponent = {
     config: '<'
   },
   template,
-  controller: function() {
+  controller: function($element) {
     'ngInject';
 
     this.$onInit = () => {
-      console.log("---------->", this.config);
-      this.id = _.kebabCase(this.config.title);
-
+      const canvas = $element.find('canvas')[0];
       const info = {
         type: 'line',
         data: {
@@ -61,11 +59,9 @@ const lineChartComponent = {
           }
         }
       };
-
       const ctx = document.getElementById('test3');
-      new Chart(ctx, info);
+      new Chart(canvas, info);
     };
-
   },
   controllerAs: 'vm'
 };
