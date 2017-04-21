@@ -2,8 +2,6 @@ import angular from 'angular';
 import template from './lineChart.html';
 import './lineChart.scss';
 import Chart from 'chart.js/src/chart.js';
-import chartjs from 'angular-chart.js';
-import _ from 'lodash';
 
 const lineChartComponent = {
   bindings: {
