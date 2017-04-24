@@ -22,12 +22,14 @@ const UsersService = function($q, $http, $state) {
   this.update = user => {
     const defer = $q.defer();
 
-    $http.put(`/users/${this.me._id}`, user)
+    $http.put(`/users/${this.me.id}`, user)
     .then(updatedUser => {
       this.me = _.assign(this.me, updatedUser);
       defer.resolve(this.me);
     })
-    .catch(err => defer.reject(err.data.message));
+    .catch(err => defer.reject(err));
+
+    return defer.promise;
   };
 
   const initializeMe = me => {
@@ -53,12 +55,11 @@ const UsersService = function($q, $http, $state) {
     const defer = $q.defer();
     $http.get('/auth')
     .then(me => {
-      if(me.authorized === false) {
+      if(me.authenticated === false) {
         return defer.reject();
       }
       this.me = initializeMe(me);
-      defer.resolve(this.me);
-      return null;
+      return defer.resolve(this.me);
     }, () => {
       defer.reject();
     });

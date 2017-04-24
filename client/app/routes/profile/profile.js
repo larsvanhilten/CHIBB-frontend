@@ -1,26 +1,35 @@
 import angular from 'angular';
 import routeWrap from 'ng-component-routing';
 import template from './profile.html';
+import _ from 'lodash';
 import './profile.scss';
 
-const controller = function(Users) {
+const controller = function(Users, $state, Session) {
   'ngInject';
 
+  this.error = '';
   this.passwordHelp =
   'Must be 8 characters long and contain a non-alphabetical character';
 
   this.adminNotice =
   'Only an admin can edit this field';
 
-  //retrieve user from Users.me
-  this.user = {};
-  this.error = '';
+  this.$onInit = () => {
+    this.user = _.clone(Users.me);
+  };
 
   this.update = () => {
     this.error = '';
-    Users.update(this.user)
+
+    if(this.user.password !== this.user.repeatPassword) {
+      return this.error = 'The passwords dont match.';
+    }
+
+    const updated = _.pickBy(this.user, (value, key) => value !== Users.me[key]);
+    return Users.update(updated)
     .then(() => {
-      this.user = Users.me;
+      Users.getMe();
+      Session.destroySession();
     })
     .catch(error => {
       this.error = error;

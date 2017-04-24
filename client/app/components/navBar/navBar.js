@@ -9,8 +9,6 @@ const navBarComponent = {
   controller: function($rootScope, Users, $state) {
     'ngInject';
 
-    this.menuItems = [{name: 'Users', active: true}, {name: 'data'}, {name: 'profile'}];
-    this.profileOptions = [{name: 'Profile'}, {name: 'Logout'}];
     this.expandProfileOptions = false;
 
     this.menuSelect = menu => {
