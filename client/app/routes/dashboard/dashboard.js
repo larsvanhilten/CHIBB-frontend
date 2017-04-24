@@ -13,6 +13,7 @@ const controller = function() {
     dataY: [2, 4, 6, 8],
     labelY: 'testY'
   };
+
 };
 
 const dashboardComponent = {
@@ -29,5 +30,6 @@ const dashboardComponent = {
   controllerAs: 'vm'
 };
 
-routeWrap(angular).module('app.routes.dashboard', []).route('dashboard', dashboardComponent);
+routeWrap(angular).module('app.routes.dashboard', [])
+.route('dashboard', dashboardComponent);
 export default dashboardComponent;

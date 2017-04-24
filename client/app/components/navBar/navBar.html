@@ -4,7 +4,7 @@
   </div>
   <div class="navigation">
     <div
-    ng-repeat="menu in vm.menuItems track by $index"
+    ng-repeat="menu in vm.me.menuOptions track by $index"
     class="menu-item"
     ng-class="{active : menu.active}"
     ng-click="vm.menuSelect(menu)">
@@ -16,7 +16,13 @@
       <h2>{{vm.name}}</h2>
     </div>
     <div class="profile-options" ng-class="{__isOpen: vm.expandProfileOptions}">
-      <div class="option-item" ng-repeat="option in vm.profileOptions track by $index">{{option.name | uppercase }}</div>
+      <div
+      class="option-item"
+      ng-repeat="option in vm.me.profileOptions track by $index"
+      ng-click="option.action()">
+      {{option.name | uppercase }}
+    </div>
     </div>
   </div>
 </div>
+{{vm.test}}
