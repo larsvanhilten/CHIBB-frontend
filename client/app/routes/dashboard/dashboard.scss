@@ -1,4 +1,17 @@
 @import "../../core/constants";
 @import "../../core/mixins";
 
+dashboard .dashboard-container {
+  height: 100%;
+  margin: 2%;
+}
 
+dashboard .charts-container {
+  height: 100%;
+}
+
+dashboard .chart {
+  width: 33%;
+  height: 50%;
+  display: inline-block;
+}

@@ -18,6 +18,7 @@ const lineChartComponent = {
         data: {
           labels: this.config.dataY,
           datasets: [{
+            label: 'A test',
             backgroundColor: '#ffffff',
             borderColor: '#FF6520',
             pointBorderColor: '#23D7AC',
