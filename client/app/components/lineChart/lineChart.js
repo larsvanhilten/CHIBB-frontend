@@ -1,6 +1,7 @@
 import angular from 'angular';
 import template from './lineChart.html';
 import './lineChart.scss';
+import _ from 'lodash';
 import Chart from 'chart.js/src/chart.js';
 
 const lineChartComponent = {
@@ -16,15 +17,8 @@ const lineChartComponent = {
       const info = {
         type: 'line',
         data: {
-          labels: this.config.dataY,
-          datasets: [{
-            label: 'A test',
-            backgroundColor: '#ffffff',
-            borderColor: '#FF6520',
-            pointBorderColor: '#23D7AC',
-            data: this.config.dataX,
-            fill: false,
-          }]
+          labels: this.config.dataX,
+          datasets: []
         },
         options: {
           responsive: true,
@@ -58,6 +52,21 @@ const lineChartComponent = {
           }
         }
       };
+
+      _.map(this.config.datasets, dataset => {
+
+        const data = {
+          label: dataset.label,
+          backgroundColor: dataset.backgroundColor || '#ffffff',
+          borderColor: dataset.borderColor || '#FF6520',
+          pointBorderColor: dataset.pointBorderColor || '#23D7AC',
+          data: dataset.dataY,
+          fill: false,
+        };
+
+        info.data.datasets.push(data);
+      });
+
       const ctx = document.getElementById('test3');
       new Chart(canvas, info);
     };

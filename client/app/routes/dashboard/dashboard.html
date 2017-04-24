@@ -1,16 +1,13 @@
 <div class="dashboard-container">
   <div class="charts-container">
     <div class="chart">
-      <line-chart config="vm.config"></line-chart>
+      <line-chart ng-if="vm.windConfig.loaded" config="vm.windConfig"></line-chart>
     </div>
     <div class="chart">
-      <line-chart config="vm.config"></line-chart>
+      <line-chart ng-if="vm.temperatureConfig.loaded" config="vm.temperatureConfig"></line-chart>
     </div>
     <div class="chart">
-      <line-chart config="vm.config"></line-chart>
+      <line-chart ng-if="vm.rainfallConfig.loaded" config="vm.rainfallConfig"></line-chart>
     </div>
   </div>
 </div>
-<!---    <line-chart config="vm.config"></line-chart>
-
-    <line-chart config="vm.config"></line-chart>
