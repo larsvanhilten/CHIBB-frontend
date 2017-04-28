@@ -32,25 +32,6 @@ const UsersService = function($q, $http, $state) {
     return defer.promise;
   };
 
-  const initializeMe = me => {
-    me.profileOptions = [
-      {name: 'Profile', action: () => $state.go('profile')},
-    ];
-
-    if(me.role === 'Admin') {
-      me.menuOptions = [
-        {name: 'Dashboard', active: true, action: () => $state.go('dashboard')},
-        {name: 'Users', action: () => {}}
-      ];
-    }else {
-      me.menuOptions = [
-        {name: 'Dashboard', active: true, action: () => $state.go('dashboard')},
-        {name: 'Sensors', action: () => {}}
-      ];
-    }
-    return me;
-  };
-
   this.getMe = () => {
     const defer = $q.defer();
     $http.get('/auth')
@@ -58,7 +39,7 @@ const UsersService = function($q, $http, $state) {
       if(me.authenticated === false) {
         return defer.reject();
       }
-      this.me = initializeMe(me);
+      this.me = me;
       return defer.resolve(this.me);
     }, () => {
       defer.reject();
