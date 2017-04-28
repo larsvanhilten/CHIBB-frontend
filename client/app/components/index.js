@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 //IMPORTS
+import './stdDropdown/stdDropdown';
 import './lineChart/lineChart';
 import './lineChart/lineChart';
 import './footer/footer';
@@ -15,6 +16,7 @@ const components = angular.module('app.components', [
   'app.components.footer',
   'app.components.lineChart',
   'app.components.lineChart',
+  'app.components.stdDropdown',
 ]);
 
 export default components;

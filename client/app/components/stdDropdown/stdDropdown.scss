@@ -1,0 +1,82 @@
+@import "../../core/constants";
+@import "../../core/mixins";
+
+std-dropdown .form-dropdown {
+  border: 1px solid $grey;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+}
+
+std-dropdown .dropdown-container label {
+  margin-bottom: 5px;
+}
+
+std-dropdown .form-dropdown select {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 0;
+  font-size: 15px;
+  padding-left: 10px;
+  -webkit-appearance: none;
+  border-radius: 0;
+  float: left;
+
+  &:disabled {
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid grey;
+  }
+}
+
+std-dropdown .form-dropdown i {
+  color: $orange;
+  font-size: 25px;
+  float: right;
+  pointer-events: none;
+  margin-left: -35px;
+  line-height: 41px;
+  position: fixed;
+}
+
+std-dropdown .tooltip {
+    position: relative;
+    display: inline-block;
+    color: $orange;
+    white-space: nowrap;
+}
+
+std-dropdown .tooltip .tooltip-text {
+    visibility: hidden;
+    font-family: Lato;
+    position: absolute;
+    left: 175%;
+    bottom: -25%;
+    width: 120px;
+    width: auto;
+    background-color: $white;
+    color: $orange;
+    border: 1px solid $orange;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+std-dropdown .tooltip .tooltip-text::after {
+   content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent $orange transparent transparent;
+}
+
+std-dropdown .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

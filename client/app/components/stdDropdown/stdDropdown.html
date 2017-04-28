@@ -1,0 +1,16 @@
+<div class="dropdown-container">
+  <label for="{{vm.label}}">
+    {{vm.label}}
+    <i class="fa fa-question-circle-o tooltip" aria-hidden="true" ng-if="vm.help">
+      <span class="tooltip-text">{{vm.help}}</span>
+    </i>
+  </label>
+  <div class="form-dropdown">
+    <select
+    ng-options="el as el for el in vm.data"
+    ng-model="vm.value"
+    ng-disabled="vm.disabled === true">
+    </select>
+    <i class="fa fa-angle-down"></i>
+  </div>
+</div>
