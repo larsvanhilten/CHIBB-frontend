@@ -36,6 +36,24 @@ const lineChartComponent = {
           },
           scales: {
             xAxes: [{
+              ticks: {
+                maxRotation: 90,
+                minRotation: 0
+              },
+              type: 'time',
+              time: {
+                displayFormats: {
+                  millisecond: 'MMM DD',
+                  second: 'MMM DD',
+                  minute: 'MMM DD',
+                  hour: 'MMM DD',
+                  day: 'MMM DD',
+                  week: 'MMM DD',
+                  month: 'MMM DD',
+                  quarter: 'MMM DD',
+                  year: 'MMM DD',
+                }
+              },
               display: true,
               scaleLabel: {
                 display: true,
