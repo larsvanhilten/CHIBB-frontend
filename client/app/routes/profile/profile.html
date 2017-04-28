@@ -1,10 +1,10 @@
 <div class="profile-container">
   <div class="form-container">
-    <std-text label="E-mail" type="text" data="vm.user.email" read-only="true" help="{{vm.adminNotice}}"></std-text>
+    <std-text label="E-mail" type="text" data="vm.user.email" read-only="!vm.isAdmin" help="{{vm.adminNotice}}"></std-text>
     <br>
     <std-text label="Name" type="text" data="vm.user.name"></std-text>
     <br>
-    <std-text label="Role" type="text" data="vm.user.role" read-only="true" help="{{vm.adminNotice}}"></std-text>
+    <std-text label="Role" type="text" data="vm.user.role" read-only="!vm.isAdmin" help="{{vm.adminNotice}}"></std-text>
     <br>
     <hr>
     <br>

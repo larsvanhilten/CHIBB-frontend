@@ -7,6 +7,7 @@ import './profile.scss';
 const controller = function(Users, $state, Session) {
   'ngInject';
 
+  this.isAdmin = Users.me.role === 'Admin';
   this.error = '';
   this.passwordHelp =
   'Must be 8 characters long and contain a non-alphabetical character';
@@ -28,7 +29,6 @@ const controller = function(Users, $state, Session) {
     const updated = _.pickBy(this.user, (value, key) => value !== Users.me[key]);
     return Users.update(updated)
     .then(() => {
-      Users.getMe();
       Session.destroySession();
     })
     .catch(error => {
