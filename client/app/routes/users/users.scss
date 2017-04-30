@@ -1,5 +1,28 @@
 @import "../../core/constants";
 @import "../../core/mixins";
 
-users {
+users .users-container {
+  width: 80%;
+  height: 100%;
+  margin: 5% auto;
+}
+
+users table {
+  border-collapse: collapse;
+}
+
+users th {
+  background-color: $orange;
+  border: 1px solid $orange;
+  padding: 8px;
+  cursor: pointer;
+  color: $white;
+  text-align: left;
+  padding-left: 10px;
+}
+
+users td {
+  border: 1px solid $light-grey;
+  padding: 8px;
+  text-align: left;
 }

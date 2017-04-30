@@ -1,3 +1,19 @@
-<div>
-  <h1>{{ vm.name }}</h1>
+<div class="users-container">
+  <div class="table-container">
+    <table style="width:100%">
+    <tr>
+      <th
+      ng-repeat="(key, value) in vm.users[0]"
+      ng-click="vm.setOrder(key)">
+        {{key | uppercase}}
+      </th>
+    </tr>
+    <tr ng-repeat="user in vm.users | orderBy : vm.column.field : vm.column.reverse">
+      <td>{{user._id}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.role}}</td>
+    </tr>
+  </table>
+  </div>
 </div>
