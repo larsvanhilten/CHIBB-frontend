@@ -7,7 +7,7 @@ import './profile.scss';
 const controller = function(Users, $state, Session) {
   'ngInject';
 
-  this.roles = ['User', 'Admin'];
+  this.roles = Users.roles;
   this.isAdmin = Users.me.role === 'Admin';
   this.error = '';
   this.passwordHelp =

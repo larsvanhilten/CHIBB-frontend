@@ -6,6 +6,8 @@ const UsersService = function($q, $http, $state) {
 
   this.me = null;
 
+  this.roles = ['User', 'Admin'];
+
   this.create = user => {
     const defer = $q.defer();
 
