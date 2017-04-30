@@ -12,10 +12,6 @@ const navBarComponent = {
     this.expandProfileOptions = false;
 
     this.menuSelect = menu => {
-      const oldActive = _.find(this.me.menuOptions, menu => menu.active);
-      oldActive.active = false;
-      menu.active = true;
-
       menu.action();
     };
 
@@ -32,15 +28,27 @@ const navBarComponent = {
       if(me.role === 'Admin') {
         me.menuOptions = [
           {name: 'Dashboard', active: true, action: () => $state.go('dashboard')},
-          {name: 'Users', action: () => {}}
+          {name: 'Users', action: () => $state.go('users')}
         ];
       }else {
         me.menuOptions = [
           {name: 'Dashboard', active: true, action: () => $state.go('dashboard')},
-          {name: 'Sensors', action: () => {}}
+          {name: 'Sensors', action: () => $state.go('sensors')}
         ];
       }
       return me;
+    };
+
+    const removeActiveState = () => {
+      const oldActive = _.find(this.me.menuOptions, menu => menu.active);
+      oldActive.active = false;
+    };
+
+    const setActiveState = state => {
+      const newActive = _.find(this.me.menuOptions, menu => menu.name === state.pageTitle);
+      if(!_.isNil(newActive)) {
+        newActive.active = true;
+      }
     };
 
     $rootScope.$on('$stateChangeSuccess', (e, toState) => {
@@ -48,6 +56,8 @@ const navBarComponent = {
       if($rootScope.showNavBar && Users.me) {
         this.me = initializeMe(Users.me);
         this.name = Users.me.name;
+        removeActiveState();
+        setActiveState(toState);
       }
     });
   },
