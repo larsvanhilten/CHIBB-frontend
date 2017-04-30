@@ -2,6 +2,7 @@ import angular from 'angular';
 import routeWrap from 'ng-component-routing';
 import template from './users.html';
 import './users.scss';
+import _ from 'lodash';
 
 const controller = function(Users) {
   'ngInject';
@@ -9,6 +10,17 @@ const controller = function(Users) {
   this.column = {
     field: 'name',
     reverse: false
+  };
+
+
+  this.editUser = {};
+  this.roles = Users.roles;
+
+  this.showUserModal = false;
+
+  this.userModal = user => {
+    this.editUser = _.clone(user);
+    this.showUserModal = true;
   };
 
   this.setOrder = column => {
@@ -29,6 +41,26 @@ const controller = function(Users) {
   .catch(error => {
     this.error = error;
   });
+
+  this.update = () => {
+    this.editError = '';
+    const originalUser = _.find(this.users, user => user._id === this.editUser._id);
+    const updated = _.pickBy(this.editUser, (value, key) => value !== originalUser[key]);
+
+    if(_.isEmpty(updated)) {
+      this.showUserModal = false;
+    } else {
+      updated._id = originalUser._id;
+      Users.update(updated)
+      .then(user => {
+        _.assign(originalUser, user);
+        this.showUserModal = false;
+      })
+      .catch(error => {
+        this.editError = error;
+      });
+    }
+  };
 
 };
 

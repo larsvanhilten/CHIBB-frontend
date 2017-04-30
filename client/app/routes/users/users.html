@@ -1,4 +1,23 @@
 <div class="users-container">
+
+  <div class="user-modal" ng-show="vm.showUserModal">
+    <i
+    class="fa fa-times"
+    aria-hidden="true"
+    ng-click="vm.showUserModal = false">
+    </i>
+    <div class="form-container">
+      <h3>EDIT USER</h3>
+      <hr>
+      <std-text label="_id" type="text" data="vm.editUser._id" read-only="true"></std-text>
+      <std-text label="Email" type="email" data="vm.editUser.email"></std-text>
+      <std-text label="Name" type="text" data="vm.editUser.name"></std-text>
+      <std-dropdown label="Role" value="vm.editUser.role" data="vm.roles"></std-dropdown>
+      <std-button text="Save" ng-click="vm.update()"></std-button>
+      <p class="error">{{vm.editError}}</p>
+    </div>
+  </div>
+
   <p class="error">{{vm.error}}</p>
   <div class="table-container">
     <table style="width:100%">
@@ -9,7 +28,9 @@
         {{key | uppercase}}
       </th>
     </tr>
-    <tr ng-repeat="user in vm.users | orderBy : vm.column.field : vm.column.reverse">
+    <tr
+    ng-repeat="user in vm.users | orderBy : vm.column.field : vm.column.reverse"
+    ng-click="vm.userModal(user)">
       <td>{{user._id}}</td>
       <td>{{user.email}}</td>
       <td>{{user.name}}</td>
@@ -17,4 +38,5 @@
     </tr>
   </table>
   </div>
+
 </div>

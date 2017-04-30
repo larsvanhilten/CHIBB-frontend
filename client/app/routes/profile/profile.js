@@ -29,6 +29,7 @@ const controller = function(Users, $state, Session) {
     }
 
     const updated = _.pickBy(this.user, (value, key) => value !== Users.me[key]);
+    updated._id = this.user.id;
     return Users.update(updated)
     .then(() => {
       Session.destroySession();
