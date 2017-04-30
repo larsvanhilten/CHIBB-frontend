@@ -26,7 +26,9 @@ const controller = function(Users) {
   .then(users => {
     this.users = users;
   })
-  .catch(error => {});
+  .catch(error => {
+    this.error = error;
+  });
 
 };
 

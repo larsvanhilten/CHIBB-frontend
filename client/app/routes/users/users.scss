@@ -7,8 +7,18 @@ users .users-container {
   margin: 5% auto;
 }
 
+users .error {
+  text-align: center;
+  color: red;
+  font-style: italic;
+}
+
 users table {
   border-collapse: collapse;
+}
+
+users tr:hover {
+  background-color: $light-grey;
 }
 
 users th {
