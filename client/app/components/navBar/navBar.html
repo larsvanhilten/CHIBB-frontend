@@ -7,7 +7,7 @@
     ng-repeat="menu in vm.me.menuOptions track by $index"
     class="menu-item"
     ng-class="{active : menu.active}"
-    ng-click="vm.menuSelect(menu)">
+    ng-click="menu.action()">
       <h3>{{menu.name | uppercase}}</h3>
     </div>
   </div>

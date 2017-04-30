@@ -11,10 +11,6 @@ const navBarComponent = {
 
     this.expandProfileOptions = false;
 
-    this.menuSelect = menu => {
-      menu.action();
-    };
-
     this.home = () => {
       $state.go(Users.me.home || 'dashboard');
     };
@@ -55,7 +51,7 @@ const navBarComponent = {
       $rootScope.showNavBar = Boolean(toState.showNavBar);
       if($rootScope.showNavBar && Users.me) {
         this.me = initializeMe(Users.me);
-        this.name = Users.me.name;
+        this.name = _.capitalize(Users.me.name);
         removeActiveState();
         setActiveState(toState);
       }
