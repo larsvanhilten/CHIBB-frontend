@@ -41,9 +41,16 @@ const UsersService = function($q, $http, $state) {
       }
       this.me = me;
       return defer.resolve(this.me);
-    }, () => {
-      defer.reject();
-    });
+    })
+    .catch(error => defer.reject(error));
+    return defer.promise;
+  };
+
+  this.getAll = () => {
+    const defer = $q.defer();
+    $http.get('/users')
+    .then(users => defer.resolve(users))
+    .catch(error => defer.reject(error));
     return defer.promise;
   };
 };
