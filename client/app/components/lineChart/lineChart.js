@@ -37,6 +37,8 @@ const lineChartComponent = {
           scales: {
             xAxes: [{
               ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20,
                 maxRotation: 90,
                 minRotation: 0
               },
