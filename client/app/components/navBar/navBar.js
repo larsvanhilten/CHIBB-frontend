@@ -24,6 +24,7 @@ const navBarComponent = {
       if(me.role === 'Admin') {
         me.menuOptions = [
           {name: 'Dashboard', active: true, action: () => $state.go('dashboard')},
+          {name: 'Sensors', action: () => $state.go('sensors')},
           {name: 'Users', action: () => $state.go('users')}
         ];
       }else {
