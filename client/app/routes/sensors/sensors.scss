@@ -1,5 +1,90 @@
 @import "../../core/constants";
 @import "../../core/mixins";
 
-sensors {
+sensors .sensors-container {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 2% 0;
+  box-sizing: border-box;
+}
+
+sensors .status-container {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid $grey;
+}
+
+sensors .status {
+  display: block;
+  width: 50%;
+  text-transform: capitalize;
+}
+
+sensors .status.right {
+  float: right;
+}
+
+sensors .status > .fa {
+  padding: 5px;
+
+  &.active {
+    color: green;
+  }
+
+  &.intermittend {
+    color: orange;
+  }
+
+  &.inactive {
+    color: red;
+  }
+}
+
+sensors .broker-container {
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 2% 0;
+}
+
+sensors .broker-form {
+  width: 60%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+sensors .left-half {
+  display: inline-block !important;
+  width: 50% !important;
+  box-sizing: border-box;
+}
+
+sensors .right-half {
+  display: inline-block !important;
+  width: 48.7% !important;
+  box-sizing: border-box;
+}
+
+sensors .broker-form > std-text {
+  padding-top: 2%;
+  display: block;
+
+}
+
+sensors .broker-form > std-button {
+  margin: 3% 0;
+  display: block;
+}
+
+sensors .error {
+  text-align: center;
+  font-style: italic;
+  color: red;
+}
+
+sensors .info {
+  text-align: center;
+  font-style: italic;
+  color: $orange;
 }

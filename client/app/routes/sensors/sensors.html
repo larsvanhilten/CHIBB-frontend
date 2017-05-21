@@ -1,3 +1,30 @@
-<div>
-  <h1>{{ vm.name }}</h1>
+<div class="sensors-container">
+  <div class="status-container">
+    <span
+    class="status"
+    ng-repeat="reading in vm.statusses track by $index"
+    ng-class="{'right' : $even && !$last}">
+    <i
+    class="fa fa-dot-circle-o"
+    title="Status"
+    ng-class="reading.status">
+    </i>
+    {{reading.type}}
+    (last message: {{reading.timestamp.getFullYear() + "/" + (reading.timestamp.getMonth() + 1 ) + "/" + reading.timestamp.getDate()}})
+  </span>
+  </div>
+
+  <div class="broker-container">
+    <form class="broker-form">
+      <std-text label="Name" type="text" data="vm.broker.name"></std-text>
+      <std-text label="Url" type="text" data="vm.broker.url"></std-text>
+      <std-text class="left-half" label="Port" type="text" data="vm.broker.port"></std-text>
+      <std-text class="right-half" label="Channel" type="text" data="vm.broker.channel"></std-text>
+      <std-text class="left-half" label="Username" type="text" data="vm.broker.username"></std-text>
+      <std-text class="right-half" label="Password" type="password" data="vm.broker.password"></std-text>
+      <std-button text="Add" ng-click="vm.addBroker()"></std-button>
+      <p class="error">{{vm.error}}</p>
+      <p class="info">{{vm.info}}</p>
+    </form>
+  </div>
 </div>
