@@ -62,6 +62,19 @@ const controller = function(Users) {
     }
   };
 
+  this.deleteUser = user => {
+    if(confirm('Are you sure you want to delete this user?')) {
+      Users.delete(user._id)
+      .then(() => {
+        const index = this.users.indexOf(user);
+        this.users.splice(index, 1);
+      })
+      .catch(err => {
+        this.editError = err;
+      });
+    }
+  };
+
 };
 
 const usersComponent = {

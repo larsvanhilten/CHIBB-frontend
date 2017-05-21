@@ -51,6 +51,16 @@ const UsersService = function($q, $http, $state) {
     .catch(error => defer.reject(error.message));
     return defer.promise;
   };
+
+  this.delete = id => {
+    const defer = $q.defer();
+
+    $http.delete(`/users/${id}`)
+    .then(() => defer.resolve())
+    .catch(err => defer.reject(err));
+
+    return defer.promise;
+  };
 };
 
 angular.module('app.services.Users', []).service('Users', UsersService);

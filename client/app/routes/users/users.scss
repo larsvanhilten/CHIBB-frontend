@@ -39,6 +39,13 @@ users td {
   text-align: left;
 }
 
+users td > i {
+  float: right;
+  &:hover {
+    color: red;
+  }
+}
+
 users .user-modal {
   background-color: $white;
   box-shadow: 0px 6px 35px #888888;
