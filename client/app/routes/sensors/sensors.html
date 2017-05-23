@@ -14,17 +14,49 @@
   </span>
   </div>
 
-  <div class="broker-container">
-    <form class="broker-form">
-      <std-text label="Name" type="text" data="vm.broker.name"></std-text>
-      <std-text label="Url" type="text" data="vm.broker.url"></std-text>
-      <std-text class="left-half" label="Port" type="text" data="vm.broker.port"></std-text>
-      <std-text class="right-half" label="Channel" type="text" data="vm.broker.channel"></std-text>
-      <std-text class="left-half" label="Username" type="text" data="vm.broker.username"></std-text>
-      <std-text class="right-half" label="Password" type="password" data="vm.broker.password"></std-text>
-      <std-button text="Add" ng-click="vm.addBroker()"></std-button>
-      <p class="error">{{vm.error}}</p>
-      <p class="info">{{vm.info}}</p>
-    </form>
+  <div class="user-modal" ng-show="vm.showSensorModal">
+    <i
+    class="fa fa-times"
+    aria-hidden="true"
+    ng-click="vm.showSensorModal = false">
+    </i>
+    <div class="form-container">
+      <h3>{{vm.isEditMode ? "Edit broker" : "Add broker"}}</h3>
+      <hr>
+      <std-text label="Name" type="text" data="vm.editBroker.name"></std-text>
+      <std-text label="Url" type="text" data="vm.editBroker.url"></std-text>
+      <std-text label="Port" type="text" data="vm.editBroker.port"></std-text>
+      <std-text label="Channel" type="text" data="vm.editBroker.channel"></std-text>
+      <std-text label="Username" type="text" data="vm.editBroker.username"></std-text>
+      <std-text label="Password" type="text" data="vm.editBroker.password"></std-text>
+      <std-button text="Add" ng-click="vm.isEditMode ? vm.updateBroker() : vm.addBroker()"></std-button>
+      <p class="error">{{vm.editError}}</p>
+    </div>
+  </div>
+
+  <p class="error">{{vm.error}}</p>
+  <div class="table-container">
+    <table style="width:100%">
+    <tr>
+      <th
+      ng-repeat="header in vm.headers"
+      ng-click="vm.setOrder(header)">
+        {{header | uppercase}}
+      </th>
+    </tr>
+    <tr
+    ng-repeat="broker in vm.brokers | orderBy : vm.column.field : vm.column.reverse"
+    ng-click="vm.brokerModal(broker)">
+      <td>{{broker.name}}</td>
+      <td>{{broker.url}}</td>
+      <td>{{broker.channel}}</td>
+      <td>{{broker.port}}<i class="fa fa-trash" ng-click="vm.deleteBroker(broker); $event.stopPropagation();"></i></td>
+    </tr>
+  </table>
+  <i
+  class="fa fa-plus add"
+  aria-hidden="true"
+  ng-click="vm.brokerModal()">
+  </i>
   </div>
 </div>

@@ -41,50 +41,102 @@ sensors .status > .fa {
   }
 }
 
-sensors .broker-container {
-  border: 1px solid #cccccc;
-  box-sizing: border-box;
-  padding: 5px;
-  margin: 2% 0;
-}
-
-sensors .broker-form {
-  width: 60%;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-sensors .left-half {
-  display: inline-block !important;
-  width: 50% !important;
-  box-sizing: border-box;
-}
-
-sensors .right-half {
-  display: inline-block !important;
-  width: 48.7% !important;
-  box-sizing: border-box;
-}
-
-sensors .broker-form > std-text {
-  padding-top: 2%;
-  display: block;
-
-}
-
-sensors .broker-form > std-button {
-  margin: 3% 0;
-  display: block;
-}
-
 sensors .error {
   text-align: center;
-  font-style: italic;
   color: red;
+  font-style: italic;
 }
 
-sensors .info {
+sensors table {
+  border-collapse: collapse;
+}
+
+sensors tr:hover {
+  background-color: $light-grey;
+  cursor: pointer;
+}
+
+sensors th {
+  user-select: none;
+  background-color: $orange;
+  border: 1px solid $orange;
+  padding: 8px;
+  cursor: pointer;
+  color: $white;
+  text-align: left;
+  padding-left: 10px;
+}
+
+sensors td {
+  border: 1px solid $light-grey;
+  padding: 8px;
+  text-align: left;
+}
+
+sensors td > i {
+  float: right;
+  &:hover {
+    color: red;
+  }
+}
+
+sensors .add {
+  width: 100%;
   text-align: center;
-  font-style: italic;
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  &:hover {
+    color: $green;
+  }
+}
+
+sensors .user-modal {
+  background-color: $white;
+  box-shadow: 0px 6px 35px #888888;
+  width: 65%;
+  height: 75%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+sensors .user-modal.ng-hide {
+  opacity: 0;
+}
+
+sensors .user-modal.ng-hide-add, .user-modal.ng-hide-remove {
+  transition: all 0.3s linear;
+}
+
+sensors .user-modal > i {
+  position: absolute;
+  right: 0;
+  padding: 8px;
+  font-size: 18px;
   color: $orange;
+  cursor: pointer;
+
+}
+
+sensors .form-container {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+sensors .form-container > h3 {
+  color: $orange;
+}
+
+sensors .form-container > hr {
+  border: 1px solid $green;
+  margin-bottom: 3%;
+}
+
+sensors .form-container > std-text, std-dropdown {
+  margin-bottom: 10px;
+  display: block;
 }
