@@ -4,10 +4,32 @@ import template from './dashboard.html';
 import './dashboard.scss';
 import _ from 'lodash';
 
-const controller = function(Sensors) {
+const controller = function(Sensors, $scope) {
   'ngInject';
 
-  this.windConfig = {
+  this.sensors = [];
+  this.chart = {};
+  this.chart.loaded = true;
+
+  Sensors.getStatusses()
+  .then(sensors => {
+    _.map(sensors, sensor => {
+      this.sensors.push(_.capitalize(sensor.type));
+    });
+  })
+  .catch(() => {});
+
+  $scope.$watch('vm.sensorOne', () => {
+    if(this.sensorOne) {
+      Sensors.get()
+      .then(data => {
+        
+      })
+      .catch();
+    }
+  });
+
+  this.chart.config = {
     loaded: false,
     title: 'Wind readings',
     labelY: 'Wind speed',
@@ -20,62 +42,6 @@ const controller = function(Sensors) {
       }
     ]
   };
-
-  Sensors.get('wind')
-  .then(readings => {
-    _.map(readings, reading => {
-      this.windConfig.datasets[0].dataY.push(reading.reading);
-      this.windConfig.dataX.push(reading.timestamp);
-      this.windConfig.loaded = true;
-    });
-  });
-
-  this.temperatureConfig = {
-    loaded: false,
-    title: 'Temperature readings',
-    labelY: 'Temperature',
-    labelX: 'Time',
-    dataX: [],
-    datasets: [
-      {
-        label: 'Temperature',
-        dataY: []
-      }
-    ]
-  };
-
-  Sensors.get('temperature')
-  .then(readings => {
-    _.map(readings, reading => {
-      this.temperatureConfig.datasets[0].dataY.push(reading.reading);
-      this.temperatureConfig.dataX.push(reading.timestamp);
-      this.temperatureConfig.loaded = true;
-    });
-  });
-
-  this.rainfallConfig = {
-    loaded: false,
-    title: 'Rainfall readings',
-    labelY: 'Rainfall',
-    labelX: 'Time',
-    dataX: [],
-    datasets: [
-      {
-        label: 'Rainfall',
-        dataY: []
-      }
-    ]
-  };
-
-  Sensors.get('rainfall')
-  .then(readings => {
-    _.map(readings, reading => {
-      this.rainfallConfig.datasets[0].dataY.push(reading.reading);
-      this.rainfallConfig.dataX.push(reading.timestamp);
-      this.rainfallConfig.loaded = true;
-    });
-  });
-
 };
 
 const dashboardComponent = {

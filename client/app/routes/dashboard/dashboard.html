@@ -1,13 +1,38 @@
 <div class="dashboard-container">
+  <div class="controls-container">
+    <div class="chart">
+      <std-dropdown
+      class="sensor-dropdown"
+      label="Sensor 1"
+      value="vm.sensorOne"
+      data="vm.sensors">
+      </std-dropdown>
+      <std-dropdown
+      class="chart-dropdown"
+      label="Chart"
+      data="vm.chartOne"
+      disabled="!vm.sensorOne">
+      </std-dropdown>
+    </div>
+    <div class="divider">
+    </div>
+    <div class="chart">
+      <std-dropdown
+      class="sensor-dropdown"
+      label="Sensor 2"
+      value="vm.sensorTwo"
+      data="vm.sensors">
+      </std-dropdown>
+      <std-dropdown
+      class="chart-dropdown"
+      label="Chart"
+      data="vm.chartTwo"
+      disabled="!vm.sensorTwo">
+      </std-dropdown>
+    </div>
+  </div>
   <div class="charts-container">
-    <div class="chart">
-      <line-chart ng-if="vm.windConfig.loaded" config="vm.windConfig"></line-chart>
-    </div>
-    <div class="chart">
-      <line-chart ng-if="vm.temperatureConfig.loaded" config="vm.temperatureConfig"></line-chart>
-    </div>
-    <div class="chart">
-      <line-chart ng-if="vm.rainfallConfig.loaded" config="vm.rainfallConfig"></line-chart>
-    </div>
+    <div class="horizontal-divider"></div>
+    <line-chart ng-if="vm.chart.loaded" config="vm.chart.config"></line-chart>
   </div>
 </div>
