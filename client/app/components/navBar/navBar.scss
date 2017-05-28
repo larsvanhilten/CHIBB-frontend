@@ -4,6 +4,7 @@
 nav-bar .nav-container {
   width: 100%;
   position: fixed;
+  z-index: 10;
   height: 50px;
   box-sizing: border-box;
   background-color: $orange;
