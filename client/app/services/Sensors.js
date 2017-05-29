@@ -15,8 +15,8 @@ const SensorsService = function($http, $q) {
       }
       defer.resolve(readings);
     })
-    .catch(() =>
-      defer.reject()
+    .catch(err =>
+      defer.reject(err)
     );
     return defer.promise;
   };

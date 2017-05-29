@@ -3,14 +3,15 @@
     <div class="chart">
       <std-dropdown
       class="sensor-dropdown"
-      label="Sensor 1"
+      label="Sensor #1"
       value="vm.sensorOne"
       data="vm.sensors">
       </std-dropdown>
       <std-dropdown
       class="chart-dropdown"
       label="Chart"
-      data="vm.chartOne"
+      data="vm.charts"
+      value="vm.chartOne"
       disabled="!vm.sensorOne">
       </std-dropdown>
     </div>
@@ -19,15 +20,16 @@
     <div class="chart">
       <std-dropdown
       class="sensor-dropdown"
-      label="Sensor 2"
+      label="Sensor #2"
       value="vm.sensorTwo"
       data="vm.sensors">
       </std-dropdown>
       <std-dropdown
       class="chart-dropdown"
       label="Chart"
-      data="vm.chartTwo"
-      disabled="!vm.sensorTwo">
+      data="vm.charts"
+      value="vm.chartTwo"
+      disabled="!vm.sensorOne || !vm.sensorTwo">
       </std-dropdown>
     </div>
   </div>

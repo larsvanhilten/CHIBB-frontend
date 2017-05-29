@@ -8,27 +8,8 @@ const controller = function(Sensors, $scope) {
   'ngInject';
 
   this.sensors = [];
+  this.charts = ['Line-chart'];
   this.chart = {};
-  this.chart.loaded = true;
-
-  Sensors.getStatusses()
-  .then(sensors => {
-    _.map(sensors, sensor => {
-      this.sensors.push(_.capitalize(sensor.type));
-    });
-  })
-  .catch(() => {});
-
-  $scope.$watch('vm.sensorOne', () => {
-    if(this.sensorOne) {
-      Sensors.get()
-      .then(data => {
-        
-      })
-      .catch();
-    }
-  });
-
   this.chart.config = {
     loaded: false,
     title: 'Wind readings',
@@ -42,6 +23,29 @@ const controller = function(Sensors, $scope) {
       }
     ]
   };
+
+  Sensors.getStatusses()
+  .then(sensors => {
+    _.map(sensors, sensor => {
+      this.sensors.push(_.capitalize(sensor.type));
+    });
+  })
+  .catch(() => {});
+
+  $scope.$watch('vm.sensorOne', () => {
+    if(this.sensorOne) {
+      Sensors.get(this.sensorOne)
+      .then(data => {
+        _.map(data, reading => {
+          this.chart.config.datasets[0].dataY.push(reading.reading);
+          this.chart.config.dataX.push(reading.timestamp);
+          this.chart.config.loaded = true;
+        });
+      })
+      .catch(error => console.log(error));
+    }
+  });
+
 };
 
 const dashboardComponent = {
