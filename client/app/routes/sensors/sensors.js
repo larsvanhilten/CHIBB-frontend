@@ -69,7 +69,7 @@ const controller = function(Sensors, Brokers) {
 
   this.showSensorModal = false;
   this.error = null;
-  this.headers = ['name', 'url', 'port', 'channel'];
+  this.headers = ['name', 'url', 'channel', 'port'];
   this.brokers = [];
   this.column = {
     field: 'name',
