@@ -50,6 +50,11 @@
       </std-date>
     </div>
     <div class="horizontal-divider"></div>
-    <line-chart ng-if="vm.chart.config.loaded" config="vm.chart.config"></line-chart>
+    <div class="chartOne-container">
+      <line-chart ng-if="vm.configOne.loaded" config="vm.configOne"></line-chart>
+    </div>
+    <div class="chartTwo-container">
+      <line-chart ng-if="vm.configTwo.loaded" config="vm.configTwo"></line-chart>
+    </div>
   </div>
 </div>

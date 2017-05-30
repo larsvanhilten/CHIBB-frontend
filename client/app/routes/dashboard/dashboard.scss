@@ -77,3 +77,14 @@ dashboard line-chart {
   margin-bottom: 5%;
   display: block;
 }
+
+dashboard .chartOne-container {
+  display: inline-block;
+  width: 40%;
+  margin-left: 10%;
+}
+
+dashboard .chartTwo-container {
+  display: inline-block;
+  width: 40%;
+}
