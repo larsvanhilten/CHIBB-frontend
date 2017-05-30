@@ -31,10 +31,25 @@
       value="vm.chartTwo"
       disabled="!vm.sensorOne || !vm.sensorTwo">
       </std-dropdown>
+    </std-text>
     </div>
   </div>
   <div class="charts-container">
+    <div class="date-controls">
+      <std-date
+        class="from-date"
+        label="From"
+        value="vm.dateFrom"
+        read-only="!vm.chartOne || !vm.chartTwo">
+      </std-date>
+      <std-date
+        class="to-date"
+        value="vm.dateTo"
+        label="To"
+        read-only="!vm.chartOne || !vm.chartTwo">
+      </std-date>
+    </div>
     <div class="horizontal-divider"></div>
-    <line-chart ng-if="vm.chart.loaded" config="vm.chart.config"></line-chart>
+    <line-chart ng-if="vm.chart.config.loaded" config="vm.chart.config"></line-chart>
   </div>
 </div>
