@@ -1,4 +1,10 @@
 <div class="sensors-container">
+  <p>Status</p>
+  <div class="status-legend status">
+    <i class="fa fa-dot-circle-o active"></i> = active
+    <i class="fa fa-dot-circle-o intermittend"></i> = intermittend failures
+    <i class="fa fa-dot-circle-o inactive"></i> = inactive
+  </div>
   <div class="status-container">
     <span
     class="status"
@@ -6,7 +12,6 @@
     ng-class="{'right' : $even && !$last}">
     <i
     class="fa fa-dot-circle-o"
-    title="Status"
     ng-class="reading.status">
     </i>
     {{reading.type}}
@@ -14,6 +19,7 @@
   </span>
   </div>
 
+  <p>MQTT-brokers</p>
   <div class="user-modal" ng-show="vm.showSensorModal">
     <i
     class="fa fa-times"

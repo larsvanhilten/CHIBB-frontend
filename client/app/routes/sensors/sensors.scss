@@ -9,6 +9,16 @@ sensors .sensors-container {
   box-sizing: border-box;
 }
 
+sensors p {
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: $orange;
+}
+
+sensors .status-legend {
+ margin-left: 1px
+}
+
 sensors .status-container {
   width: 100%;
   box-sizing: border-box;
