@@ -9,7 +9,7 @@ const controller = function(Sensors, $scope) {
   'ngInject';
 
   this.sensors = [];
-  this.charts = ['Line', 'Bar'];
+  this.charts = ['Line', 'Bar', 'Pie'];
 
   this.configOne = {
     loaded: false,
@@ -65,6 +65,7 @@ const controller = function(Sensors, $scope) {
             const toUnix = moment(this.dateTo, 'DD-MM-YYYY').valueOf() / 1000;
             Sensors.getBetweenTime(type, fromUnix, toUnix)
             .then(data => {
+              console.log(data);
               _.map(data, reading => {
                 this.configOne.datasets[0].dataY.push(reading.reading);
                 this.configOne.dataX.push(reading.timestamp);

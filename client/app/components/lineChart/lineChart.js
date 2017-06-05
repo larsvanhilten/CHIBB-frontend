@@ -12,7 +12,51 @@ const lineChartComponent = {
   controller: function($element) {
     'ngInject';
 
+    const standardDeviation = (values, average) => {
+
+      const squareDiffs = values.map(value => {
+        const diff = value - average;
+        const sqrDiff = diff * diff;
+        return sqrDiff;
+      });
+
+      const avgSquareDiff = _.mean(squareDiffs);
+
+      const stdDev = Math.sqrt(avgSquareDiff);
+      return stdDev;
+    };
+
+    const doughnutData = () => {
+      const average = _.mean(this.config.datasets[0].dataY);
+      const deviation = standardDeviation(this.config.datasets[0].dataY, average);
+
+      const min = _.round(_.min(this.config.datasets[0].dataY));
+      const minAvg = _.round(average - deviation);
+      const maxAvg = _.round(average + deviation);
+      const max = _.round(_.max(this.config.datasets[0].dataY));
+
+      const labels = [`${min} - ${minAvg} `, `${minAvg} - ${maxAvg}`, `${maxAvg} - ${max}`];
+      const counter = [0, 0, 0];
+      _.map(this.config.datasets[0].dataY, reading => {
+        if(reading < minAvg) {
+          counter[0]++;
+        } else if(reading >= minAvg && reading <= maxAvg) {
+          counter[1]++;
+        } else if (reading > maxAvg) {
+          counter[2]++;
+        }
+      });
+
+      this.config.datasets[0].borderColor = '#FFFFFF';
+      this.config.datasets[0].dataY = counter;
+      this.config.dataX = labels;
+    };
+
     this.$onInit = () => {
+      if(this.config.type === 'pie') {
+        doughnutData();
+      }
+
       const canvas = $element.find('canvas')[0];
       const info = {
         type: this.config.type || 'line',
@@ -56,14 +100,14 @@ const lineChartComponent = {
                   year: 'MM/DD HH',
                 }
               },
-              display: true,
+              display: this.config.type !== 'pie',
               scaleLabel: {
                 display: true,
                 labelString: this.config.labelX
               }
             }],
             yAxes: [{
-              display: true,
+              display: this.config.type !== 'pie',
               scaleLabel: {
                 display: true,
                 labelString: this.config.labelY
