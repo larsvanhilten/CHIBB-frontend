@@ -1,13 +1,60 @@
 <div class="dashboard-container">
+  <div class="controls-container">
+    <div class="chart">
+      <std-dropdown
+      class="sensor-dropdown"
+      label="Sensor #1"
+      value="vm.sensorOne"
+      data="vm.sensors">
+      </std-dropdown>
+      <std-dropdown
+      class="chart-dropdown"
+      label="Chart"
+      data="vm.charts"
+      value="vm.chartOne"
+      disabled="!vm.sensorOne">
+      </std-dropdown>
+    </div>
+    <div class="divider">
+    </div>
+    <div class="chart">
+      <std-dropdown
+      class="sensor-dropdown"
+      label="Sensor #2"
+      value="vm.sensorTwo"
+      data="vm.sensors">
+      </std-dropdown>
+      <std-dropdown
+      class="chart-dropdown"
+      label="Chart"
+      data="vm.charts"
+      value="vm.chartTwo"
+      disabled="!vm.sensorOne || !vm.sensorTwo">
+      </std-dropdown>
+    </std-text>
+    </div>
+  </div>
   <div class="charts-container">
-    <div class="chart">
-      <line-chart ng-if="vm.windConfig.loaded" config="vm.windConfig"></line-chart>
+    <div class="date-controls">
+      <std-date
+        class="from-date"
+        label="From"
+        value="vm.dateFrom"
+        read-only="!vm.chartOne || !vm.chartTwo">
+      </std-date>
+      <std-date
+        class="to-date"
+        value="vm.dateTo"
+        label="To"
+        read-only="!vm.chartOne || !vm.chartTwo">
+      </std-date>
     </div>
-    <div class="chart">
-      <line-chart ng-if="vm.temperatureConfig.loaded" config="vm.temperatureConfig"></line-chart>
+    <div class="horizontal-divider"></div>
+    <div class="chartOne-container">
+      <line-chart ng-if="vm.configOne.loaded" config="vm.configOne"></line-chart>
     </div>
-    <div class="chart">
-      <line-chart ng-if="vm.rainfallConfig.loaded" config="vm.rainfallConfig"></line-chart>
+    <div class="chartTwo-container">
+      <line-chart ng-if="vm.configTwo.loaded" config="vm.configTwo"></line-chart>
     </div>
   </div>
 </div>

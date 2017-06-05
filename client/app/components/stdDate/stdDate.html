@@ -1,0 +1,10 @@
+<div class="date-container">
+	<label for="datepicker">{{vm.label}}{{vm.data.field.required ? ' *' : ''}}</label>
+	<datepicker date-format="dd-MM-yyyy">
+		<input
+    ng-model="vm.value"
+    type="text"
+    ng-disabled="vm.readOnly === true"/>
+    <i class="fa fa-calendar"></i>
+	</datepicker>
+</div>

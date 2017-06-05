@@ -3,12 +3,31 @@ import routeWrap from 'ng-component-routing';
 import template from './dashboard.html';
 import './dashboard.scss';
 import _ from 'lodash';
+import moment from 'moment';
 
-const controller = function(Sensors) {
+const controller = function(Sensors, $scope) {
   'ngInject';
 
-  this.windConfig = {
+  this.sensors = [];
+  this.charts = ['Line', 'Bar'];
+
+  this.configOne = {
     loaded: false,
+    type: 'line',
+    title: 'Wind readings',
+    labelY: 'Wind speed',
+    labelX: 'Time',
+    dataX: [],
+    datasets: [
+      {
+        label: 'Wind',
+        dataY: []
+      }
+    ]
+  };
+  this.configTwo = {
+    loaded: false,
+    type: 'line',
     title: 'Wind readings',
     labelY: 'Wind speed',
     labelX: 'Time',
@@ -21,60 +40,71 @@ const controller = function(Sensors) {
     ]
   };
 
-  Sensors.get('wind')
-  .then(readings => {
-    _.map(readings, reading => {
-      this.windConfig.datasets[0].dataY.push(reading.reading);
-      this.windConfig.dataX.push(reading.timestamp);
-      this.windConfig.loaded = true;
+  Sensors.getStatusses()
+  .then(sensors => {
+    _.map(sensors, sensor => {
+      this.sensors.push(_.capitalize(sensor.type));
     });
-  });
+  })
+  .catch(() => {});
 
-  this.temperatureConfig = {
-    loaded: false,
-    title: 'Temperature readings',
-    labelY: 'Temperature',
-    labelX: 'Time',
-    dataX: [],
-    datasets: [
-      {
-        label: 'Temperature',
-        dataY: []
+  $scope.$watchGroup(
+    ['vm.sensorOne',
+      'vm.chartOne',
+      'vm.dateFrom', 'vm.dateTo'],
+    () => {
+      if(this.sensorOne) {
+        this.configOne.title = `${this.sensorOne} readings`;
+        this.configOne.labelY = `${this.sensorOne}`;
+        this.configOne.datasets[0].label = `${this.sensorOne}`;
+        if(this.chartOne) {
+          this.configOne.type = _.lowercase(this.chartOne);
+          if(this.dateFrom && this.dateTo) {
+            const type = _.lowercase(this.sensorOne);
+            const fromUnix = moment(this.dateFrom, 'DD-MM-YYYY').valueOf() / 1000;
+            const toUnix = moment(this.dateTo, 'DD-MM-YYYY').valueOf() / 1000;
+            Sensors.getBetweenTime(type, fromUnix, toUnix)
+            .then(data => {
+              _.map(data, reading => {
+                this.configOne.datasets[0].dataY.push(reading.reading);
+                this.configOne.dataX.push(reading.timestamp);
+              });
+              this.configOne.loaded = true;
+            })
+            .catch(error => console.log(error));
+          }
+        }
       }
-    ]
-  };
-
-  Sensors.get('temperature')
-  .then(readings => {
-    _.map(readings, reading => {
-      this.temperatureConfig.datasets[0].dataY.push(reading.reading);
-      this.temperatureConfig.dataX.push(reading.timestamp);
-      this.temperatureConfig.loaded = true;
     });
-  });
 
-  this.rainfallConfig = {
-    loaded: false,
-    title: 'Rainfall readings',
-    labelY: 'Rainfall',
-    labelX: 'Time',
-    dataX: [],
-    datasets: [
-      {
-        label: 'Rainfall',
-        dataY: []
+  $scope.$watchGroup(
+    ['vm.sensorTwo',
+      'vm.chartTwo',
+      'vm.dateFrom', 'vm.dateTo'],
+    () => {
+      if(this.sensorTwo) {
+        this.configTwo.title = `${this.sensorTwo} readings`;
+        this.configTwo.labelY = `${this.sensorTwo}`;
+        this.configTwo.datasets[0].label = `${this.sensorTwo}`;
+        if(this.chartTwo) {
+          this.configTwo.type = _.lowercase(this.chartTwo);
+          if(this.dateFrom && this.dateTo) {
+            const type = _.lowercase(this.sensorTwo);
+            const fromUnix = moment(this.dateFrom, 'DD-MM-YYYY').valueOf() / 1000;
+            const toUnix = moment(this.dateTo, 'DD-MM-YYYY').valueOf() / 1000;
+            Sensors.getBetweenTime(type, fromUnix, toUnix)
+            .then(data => {
+              _.map(data, reading => {
+                this.configTwo.datasets[0].dataY.push(reading.reading);
+                this.configTwo.dataX.push(reading.timestamp);
+              });
+              this.configTwo.loaded = true;
+            })
+            .catch(error => console.log(error));
+          }
+        }
       }
-    ]
-  };
-
-  Sensors.get('rainfall')
-  .then(readings => {
-    _.map(readings, reading => {
-      this.rainfallConfig.datasets[0].dataY.push(reading.reading);
-      this.rainfallConfig.dataX.push(reading.timestamp);
-      this.rainfallConfig.loaded = true;
     });
-  });
 
 };
 

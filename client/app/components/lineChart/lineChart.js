@@ -15,7 +15,7 @@ const lineChartComponent = {
     this.$onInit = () => {
       const canvas = $element.find('canvas')[0];
       const info = {
-        type: 'line',
+        type: this.config.type || 'line',
         data: {
           labels: this.config.dataX,
           datasets: []
@@ -45,15 +45,15 @@ const lineChartComponent = {
               type: 'time',
               time: {
                 displayFormats: {
-                  millisecond: 'MMM DD',
-                  second: 'MMM DD',
-                  minute: 'MMM DD',
-                  hour: 'MMM DD',
-                  day: 'MMM DD',
-                  week: 'MMM DD',
-                  month: 'MMM DD',
-                  quarter: 'MMM DD',
-                  year: 'MMM DD',
+                  millisecond: 'MM/DD HH',
+                  second: 'MM/DD HH',
+                  minute: 'MM/DD HH',
+                  hour: 'MM/DD HH',
+                  day: 'MM/DD HH',
+                  week: 'MM/DD HH',
+                  month: 'MM/DD HH',
+                  quarter: 'MM/DD HH',
+                  year: 'MM/DD HH',
                 }
               },
               display: true,
@@ -77,7 +77,7 @@ const lineChartComponent = {
 
         const data = {
           label: dataset.label,
-          backgroundColor: dataset.backgroundColor || '#ffffff',
+          backgroundColor: dataset.backgroundColor || '#23D7AC',
           borderColor: dataset.borderColor || '#FF6520',
           pointBorderColor: dataset.pointBorderColor || '#23D7AC',
           data: dataset.dataY,

@@ -2,17 +2,89 @@
 @import "../../core/mixins";
 
 dashboard .dashboard-container {
+  z-index: -1;
   height: 100%;
-  margin: 2%;
+  width: 100%;
+}
+
+dashboard .controls-container {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  position: relative;
+  flex-direction: row;
 }
 
 dashboard .charts-container {
   width: 100%;
-  height: 100%;
+  height: 65%;
+  margin-top: 1%;
+  margin-bottom: 5%;
 }
 
 dashboard .chart {
-  width: 33%;
-  height: 50%;
+  width: 50%;
+  height: 100%;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+dashboard .sensor-dropdown {
+  width: 65% !important;
+  margin: 0 auto;
+}
+
+dashboard .chart-dropdown {
+  width: 50% !important;
+  margin: 10px auto;
+}
+
+dashboard .divider {
+  background-color: $orange;
+  width: 2px;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dashboard .date-controls {
+  width: 80%;
+  margin: 0 auto 2% auto;
+}
+
+dashboard .from-date {
   display: inline-block;
+  float: left;
+  margin-right: 10%;
+  width: 45% !important;
+}
+
+dashboard .to-date {
+  width: 45% !important;
+  display: inline-block;
+}
+
+dashboard .horizontal-divider {
+  height: 2px;
+  width: 75%;
+  background-color: $green;
+  margin: 0 auto;
+}
+
+dashboard line-chart {
+  margin-bottom: 5%;
+  display: block;
+}
+
+dashboard .chartOne-container {
+  display: inline-block;
+  width: 40%;
+  margin-left: 10%;
+}
+
+dashboard .chartTwo-container {
+  display: inline-block;
+  width: 40%;
 }
