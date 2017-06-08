@@ -47,6 +47,7 @@ const lineChartComponent = {
         }
       });
 
+      this.config.datasets[0].backgroundColor = ['#23D7AC', '#cccccc', '#FF6520'];
       this.config.datasets[0].borderColor = '#FFFFFF';
       this.config.datasets[0].dataY = counter;
       this.config.dataX = labels;
@@ -131,7 +132,6 @@ const lineChartComponent = {
         info.data.datasets.push(data);
       });
 
-      const ctx = document.getElementById('test3');
       new Chart(canvas, info);
     };
   },
