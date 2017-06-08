@@ -1,6 +1,7 @@
 import angular from 'angular';
 import _ from 'lodash';
 
+// Service for the Sensors REST API
 const SensorsService = function($http, $q) {
   'ngInject';
 

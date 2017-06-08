@@ -8,7 +8,6 @@ const footerComponent = {
   controller: function() {
     'ngInject';
 
-    this.name = 'footer';
   },
   controllerAs: 'vm'
 };

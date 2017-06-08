@@ -1,11 +1,13 @@
 import angular from 'angular';
 
+// Service dealing with authentication
 const SessionService = function($http, $q, Users, $state) {
   'ngInject';
 
   this.auth = false;
   this.token = null;
 
+  // Store JWT in localstorage
   this.createSession = token => {
     this.auth = true;
     this.token = token;
@@ -13,6 +15,7 @@ const SessionService = function($http, $q, Users, $state) {
   };
   if(localStorage.token !== undefined) {this.createSession(localStorage.token);}
 
+  // Remove JWT from localstorage
   this.destroySession = () => {
     this.auth = false;
     this.token = null;
@@ -21,6 +24,7 @@ const SessionService = function($http, $q, Users, $state) {
     $state.go('login');
   };
 
+  // Check for JWT in localstorage
   this.check = () => {
     const defer = $q.defer();
     if(localStorage.token) {

@@ -1,5 +1,6 @@
 import angular from 'angular';
 
+// Service for broker REST API
 const BrokersService = function($q, $http) {
   'ngInject';
 

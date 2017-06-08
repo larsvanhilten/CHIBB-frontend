@@ -1,5 +1,6 @@
 import angular from 'angular';
 
+// Service for the Users REST API
 const UsersService = function($q, $http, $state) {
   'ngInject';
 

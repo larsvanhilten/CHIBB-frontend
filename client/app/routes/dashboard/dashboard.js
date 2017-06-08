@@ -40,6 +40,7 @@ const controller = function(Sensors, $scope) {
     ]
   };
 
+  // Retrieve status for sensors from REST API
   Sensors.getStatusses()
   .then(sensors => {
     _.map(sensors, sensor => {
@@ -48,6 +49,7 @@ const controller = function(Sensors, $scope) {
   })
   .catch(() => {});
 
+  // Watch left forms and bottom forms for change
   $scope.$watchGroup(
     ['vm.sensorOne',
       'vm.chartOne',
@@ -78,6 +80,7 @@ const controller = function(Sensors, $scope) {
       }
     });
 
+  // Watch right forms and bottom forms for change
   $scope.$watchGroup(
     ['vm.sensorTwo',
       'vm.chartTwo',

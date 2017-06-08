@@ -12,6 +12,7 @@ const lineChartComponent = {
   controller: function($element) {
     'ngInject';
 
+    // Calculate standardDeviation for Piechart
     const standardDeviation = (values, average) => {
 
       const squareDiffs = values.map(value => {
@@ -26,7 +27,8 @@ const lineChartComponent = {
       return stdDev;
     };
 
-    const doughnutData = () => {
+    // Transformation of data for Pie chart
+    const pieChartData = () => {
       const average = _.mean(this.config.datasets[0].dataY);
       const deviation = standardDeviation(this.config.datasets[0].dataY, average);
 
@@ -55,9 +57,10 @@ const lineChartComponent = {
 
     this.$onInit = () => {
       if(this.config.type === 'pie') {
-        doughnutData();
+        pieChartData();
       }
 
+      // Configuration of chartjs-angular object
       const canvas = $element.find('canvas')[0];
       const info = {
         type: this.config.type || 'line',
@@ -118,8 +121,8 @@ const lineChartComponent = {
         }
       };
 
+      // Injecting configuration into datasets
       _.map(this.config.datasets, dataset => {
-
         const data = {
           label: dataset.label,
           backgroundColor: dataset.backgroundColor || '#23D7AC',
@@ -128,7 +131,6 @@ const lineChartComponent = {
           data: dataset.dataY,
           fill: false,
         };
-
         info.data.datasets.push(data);
       });
 

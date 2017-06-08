@@ -15,6 +15,7 @@ const navBarComponent = {
       $state.go(Users.me.home || 'dashboard');
     };
 
+    // Show right options for different user roles
     const initializeMe = me => {
       me.profileOptions = [
         {name: 'Profile', action: () => $state.go('profile')},
@@ -36,11 +37,13 @@ const navBarComponent = {
       return me;
     };
 
+    // Remove navBar option active state of being selected
     const removeActiveState = () => {
       const oldActive = _.find(this.me.menuOptions, menu => menu.active);
       oldActive.active = false;
     };
 
+    // set navBar option active state of being selected
     const setActiveState = state => {
       const newActive = _.find(this.me.menuOptions, menu => menu.name === state.pageTitle);
       if(!_.isNil(newActive)) {
@@ -48,6 +51,7 @@ const navBarComponent = {
       }
     };
 
+    // Rerendering of navBar after state change
     $rootScope.$on('$stateChangeSuccess', (e, toState) => {
       $rootScope.showNavBar = Boolean(toState.showNavBar);
       if($rootScope.showNavBar && Users.me) {
