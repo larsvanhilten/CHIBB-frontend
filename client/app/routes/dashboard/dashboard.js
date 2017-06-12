@@ -57,7 +57,6 @@ const controller = function(Sensors, $scope) {
     () => {
       if(this.sensorOne) {
         this.configOne.title = `${this.sensorOne} readings`;
-        this.configOne.labelY = `${this.sensorOne}`;
         this.configOne.datasets[0].label = `${this.sensorOne}`;
         if(this.chartOne) {
           this.configOne.type = _.lowercase(this.chartOne);
@@ -67,14 +66,14 @@ const controller = function(Sensors, $scope) {
             const toUnix = moment(this.dateTo, 'DD-MM-YYYY').valueOf() / 1000;
             Sensors.getBetweenTime(type, fromUnix, toUnix)
             .then(data => {
-              console.log(data);
               _.map(data, reading => {
+                this.configOne.labelY = `${reading.type} in ${reading.unit}`;
                 this.configOne.datasets[0].dataY.push(reading.reading);
                 this.configOne.dataX.push(reading.timestamp);
               });
               this.configOne.loaded = true;
             })
-            .catch(error => console.log(error));
+            .catch(error => console.error(error));
           }
         }
       }
@@ -88,7 +87,6 @@ const controller = function(Sensors, $scope) {
     () => {
       if(this.sensorTwo) {
         this.configTwo.title = `${this.sensorTwo} readings`;
-        this.configTwo.labelY = `${this.sensorTwo}`;
         this.configTwo.datasets[0].label = `${this.sensorTwo}`;
         if(this.chartTwo) {
           this.configTwo.type = _.lowercase(this.chartTwo);
@@ -99,12 +97,13 @@ const controller = function(Sensors, $scope) {
             Sensors.getBetweenTime(type, fromUnix, toUnix)
             .then(data => {
               _.map(data, reading => {
+                this.configTwo.labelY = `${reading.type} in ${reading.unit}`;
                 this.configTwo.datasets[0].dataY.push(reading.reading);
                 this.configTwo.dataX.push(reading.timestamp);
               });
               this.configTwo.loaded = true;
             })
-            .catch(error => console.log(error));
+            .catch(error => console.error(error));
           }
         }
       }
